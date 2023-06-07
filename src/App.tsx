@@ -1,5 +1,11 @@
+import Newsfeed from "./pages/Newsfeed";
+
 const App = () => {
-  return <></>;
+  return (
+    <>
+      <Newsfeed />
+    </>
+  );
 };
 
 export default App;

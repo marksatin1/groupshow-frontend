@@ -1,9 +1,16 @@
-import React from 'react'
+import { Painting } from "../interfaces/Artwork";
 
-const ImageDisplay = () => {
+type PaintingProps = {
+  painting: Painting;
+};
+
+const ImageDisplay: React.FC<PaintingProps> = ({ painting }) => {
   return (
-    <div>ImageDisplay</div>
-  )
-}
+    <div>
+      <p>{painting.artworkID}</p>
+      <p>{painting.type}</p>
+    </div>
+  );
+};
 
-export default ImageDisplay
+export default ImageDisplay;

@@ -13,6 +13,7 @@ const Newsfeed = () => {
 
   const populateNewsfeed = async () => {
     const { data: artworksData }: any = await axInst.get("/newsfeed/");
+    console.log(artworksData);
     setArtworks(artworksData);
   };
 

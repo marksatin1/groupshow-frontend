@@ -2,17 +2,6 @@ import React from "react";
 import { Photograph } from "../../interfaces/Artwork";
 
 type PhotographPropTypes = {
-  artworkType: string;
-  artworkID: number;
-  title: string;
-  statement?: string;
-  submissionDate: string;
-  url: string;
-  averageScore: number;
-  isOpenForCritique: boolean;
-  isPrint: boolean;
-  widthInches: number;
-  heightInches: number;
   photograph: Photograph;
 };
 

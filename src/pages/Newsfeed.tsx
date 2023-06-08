@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { axInst } from "../config/axiosInstance";
-import ImageDisplay from "../components/ImageDisplay";
-import VideoDisplay from "../components/VideoDisplay";
-import TextDisplay from "../components/TextDisplay";
 import NavBar from "../components/NavBar";
+import Painting from "../components/artwork_comps/Painting";
+import Performance from "../components/artwork_comps/Performance";
+import Photograph from "../components/artwork_comps/Photograph";
+import Song from "../components/artwork_comps/Song";
+import Video from "../components/artwork_comps/Video";
+import Writing from "../components/artwork_comps/Writing";
 
 const Newsfeed = () => {
   const [artworks, setArtworks] = useState<any[]>([]);
 
   const populateNewsfeed = async () => {
-    const { data: getArtworks }: any = await axInst.get("/newsfeed/");
-    console.log(getArtworks);
-    setArtworks(getArtworks);
+    const { data: artworksData }: any = await axInst.get("/newsfeed/");
+    setArtworks(artworksData);
   };
 
   useEffect(() => {
@@ -21,21 +23,21 @@ const Newsfeed = () => {
   const artworksToMap = artworks.map(artwork => {
     switch (artwork.artworkType) {
       case "Painting":
-        return <ImageDisplay key={artwork.artworkID} artwork={artwork} />;
+        return <Painting key={artwork.artworkID} painting={artwork} />;
       case "Performance":
-        return <VideoDisplay key={artwork.artworkID} artwork={artwork} />;
+        return <Performance key={artwork.artworkID} performance={artwork} />;
       case "Photograph":
-        return <ImageDisplay key={artwork.artworkID} artwork={artwork} />;
+        return <Photograph key={artwork.artworkID} photograph={artwork} />;
       case "Song":
-        return <ImageDisplay key={artwork.artworkID} artwork={artwork} />;
+        return <Song key={artwork.artworkID} song={artwork} />;
       case "Video":
-        return <VideoDisplay key={artwork.artworkID} artwork={artwork} />;
+        return <Video key={artwork.artworkID} video={artwork} />;
       case "Writing":
-        return <TextDisplay key={artwork.artworkID} artwork={artwork} />;
+        return <Writing key={artwork.artworkID} writing={artwork} />;
       default:
         break;
-    }})    
-  }
+    }
+  });
 
   return (
     <>

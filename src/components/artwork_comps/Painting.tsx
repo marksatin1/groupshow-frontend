@@ -1,24 +1,11 @@
-import React from 'react'
-import { Painting } from '../../interfaces/Artwork'
-
+import React from "react";
+import { Painting } from "../../interfaces/Artwork";
 
 type PaintingPropTypes = {
-  artworkType : string;
-  artworkID: number;
-  title: string;
-  statement?: string;
-  submissionDate: string;
-  url: string;
-  averageScore: number;
-  isOpenForCritique: boolean;
-  genre: string;
-  widthInches: number;
-  heightInches: number;
   painting: Painting;
+};
 
-}
-
-const Painting : React.FC<PaintingPropTypes>  = ({painting}) => {
+const Painting: React.FC<PaintingPropTypes> = ({ painting }) => {
   return (
     <div>
       <h1>{painting.title}</h1>
@@ -29,7 +16,7 @@ const Painting : React.FC<PaintingPropTypes>  = ({painting}) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Painting
+export default Painting;

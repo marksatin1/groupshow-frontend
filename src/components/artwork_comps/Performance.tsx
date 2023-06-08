@@ -1,23 +1,11 @@
-import React from 'react'
-import { Performance } from '../../interfaces/Artwork'
+import React from "react";
+import { Performance } from "../../interfaces/Artwork";
 
 type PerformancePropTypes = {
-  artworkType: string;
-  artworkID: number;
-  title: string;
-  statement?: string;
-  submissionDate: string;
-  url: string;
-  averageScore: number;
-  isOpenForCritique: boolean;
-  genre: string;
-  durationHour: number;
-  durationMin: number;
-  durationSec: number;
-  performance: Performance
-}
+  performance: Performance;
+};
 
-const Performance: React.FC<PerformancePropTypes> = ({performance}) => {
+const Performance: React.FC<PerformancePropTypes> = ({ performance }) => {
   return (
     <div>
       <h1>{performance.title}</h1>
@@ -28,7 +16,7 @@ const Performance: React.FC<PerformancePropTypes> = ({performance}) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Performance
+export default Performance;

@@ -2,17 +2,6 @@ import React from "react";
 import { Writing } from "../../interfaces/Artwork";
 
 type WritingPropTypes = {
-  artworkType: string;
-  artworkID: number;
-  title: string;
-  statement?: string;
-  submissionDate: string;
-  url: string;
-  averageScore: number;
-  isOpenForCritique: boolean;
-  genre: string;
-  isFiction: boolean;
-  wordCount: number;
   writing: Writing;
 };
 

@@ -1,8 +1,17 @@
 import React from 'react'
+import ProfilePicture from './ProfilePicture'
+import SearchBar from './SearchBar'
+import HamburgerMenu from './HamburgerMenu'
 
 const NavBar = () => {
   return (
-    <div>NavBar</div>
+
+    <div>
+      <ProfilePicture />
+      <SearchBar />
+      <HamburgerMenu />
+    </div>
+    
   )
 }
 

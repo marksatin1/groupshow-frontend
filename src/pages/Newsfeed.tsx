@@ -1,28 +1,48 @@
 import { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
 import { axInst } from "../config/axiosInstance";
-import { Painting } from "../interfaces/Artwork";
-import ImageDisplay from "../components/ImageDisplay";
+import NavBar from "../components/NavBar";
+import Painting from "../components/artwork_comps/Painting";
+import Performance from "../components/artwork_comps/Performance";
+import Photograph from "../components/artwork_comps/Photograph";
+import Song from "../components/artwork_comps/Song";
+import Video from "../components/artwork_comps/Video";
+import Writing from "../components/artwork_comps/Writing";
 
 const Newsfeed = () => {
-  const [artworks, setArtworks] = useState<Painting[]>([]);
+  const [artworks, setArtworks] = useState<any[]>([]);
 
   const populateNewsfeed = async () => {
-    const getArtworks: any = await axInst.get("/newsfeed/");
-    console.log(getArtworks.data);
-    setArtworks(getArtworks.data);
+    const { data: artworksData }: any = await axInst.get("/newsfeed/");
+    setArtworks(artworksData);
   };
 
   useEffect(() => {
     populateNewsfeed();
   }, []);
 
+  const artworksToMap = artworks.map(artwork => {
+    switch (artwork.artworkType) {
+      case "Painting":
+        return <Painting key={artwork.artworkID} painting={artwork} />;
+      case "Performance":
+        return <Performance key={artwork.artworkID} performance={artwork} />;
+      case "Photograph":
+        return <Photograph key={artwork.artworkID} photograph={artwork} />;
+      case "Song":
+        return <Song key={artwork.artworkID} song={artwork} />;
+      case "Video":
+        return <Video key={artwork.artworkID} video={artwork} />;
+      case "Writing":
+        return <Writing key={artwork.artworkID} writing={artwork} />;
+      default:
+        break;
+    }
+  });
+
   return (
     <>
       <NavBar />
-      {artworks.map(painting => {
-        return <ImageDisplay key={painting.artworkID} painting={painting} />;
-      })}
+      <div>{artworksToMap}</div>
     </>
   );
 };

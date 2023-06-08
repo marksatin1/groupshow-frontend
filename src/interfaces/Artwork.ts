@@ -1,4 +1,5 @@
 export interface Artwork {
+  artworkType: string;
   artworkID: number;
   title: string;
   statement?: string;
@@ -9,13 +10,13 @@ export interface Artwork {
 }
 
 export interface Painting extends Artwork {
-  type: string;
+  genre: string;
   widthInches: number;
   heightInches: number;
 }
 
 export interface Performance extends Artwork {
-  type: string;
+  genre: string;
   durationHour: number;
   durationMin: number;
   durationSec: number;
@@ -33,14 +34,14 @@ export interface Song extends Artwork {
 }
 
 export interface Video extends Artwork {
-  type: string;
+  genre: string;
   durationHour: number;
   durationMin: number;
   durationSec: number;
 }
 
 export interface Writing extends Artwork {
-  type: string;
+  genre: string;
   isFiction: boolean;
   wordCount: number;
 }

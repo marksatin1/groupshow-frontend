@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const SubmitButton = () => {
-  return (
-    <div>SubmitButton</div>
-  )
-}
+type SubmitButtonProps = {
+  name: string;
+};
 
-export default SubmitButton
+const SubmitButton: React.FC<SubmitButtonProps> = ({ name }) => {
+  return <button type="submit">{name}</button>;
+};
+
+export default SubmitButton;

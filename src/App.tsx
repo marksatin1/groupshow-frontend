@@ -4,8 +4,8 @@ import Portfolio from "./pages/Portfolio";
 const App = () => {
   return (
     <>
-      {/* <Newsfeed /> */}
-      <Portfolio />
+      <Newsfeed />
+      {/* <Portfolio /> */}
     </>
   );
 };

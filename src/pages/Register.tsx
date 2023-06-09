@@ -34,8 +34,6 @@ const Register = () => {
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
 
-    console.log(formData);
-
     // try {
     //   const { data: userData }: any = await axInst.post("/user/register", formData);
     //   console.log(userData);

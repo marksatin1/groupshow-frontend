@@ -15,9 +15,12 @@ const Portfolio = () => {
   const userID = 1;
 
   const populatePortfolio = async () => {
-    const { data: artworksData }: any = await axInst.get(`/user/${userID}/submitted-artwork`);
-    console.log(artworksData);
-    setArtworks(artworksData);
+    try {
+      const { data: artworksData }: any = await axInst.get(`/user/${userID}/submitted-artwork`);
+      setArtworks(artworksData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

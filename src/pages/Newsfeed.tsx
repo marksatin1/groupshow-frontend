@@ -12,9 +12,12 @@ const Newsfeed = () => {
   const [artworks, setArtworks] = useState<any[]>([]);
 
   const populateNewsfeed = async () => {
-    const { data: artworksData }: any = await axInst.get("/newsfeed/");
-    console.log(artworksData);
-    setArtworks(artworksData);
+    try {
+      const { data: artworksData }: any = await axInst.get("/newsfeed/");
+      setArtworks(artworksData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

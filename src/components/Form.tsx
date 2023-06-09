@@ -1,9 +1,7 @@
-import React from 'react'
+import { FormEvent, ReactEventHandler } from "react";
 
-const Form = () => {
-  return (
-    <div>Form</div>
-  )
-}
+const Form = ({ children }: any) => {
+  return <form>{children}</form>;
+};
 
-export default Form
+export default Form;

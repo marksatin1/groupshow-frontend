@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { axInst } from "../config/axiosInstance";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/ui/NavBar";
 import Painting from "../components/artwork_comps/Painting";
 import Performance from "../components/artwork_comps/Performance";
 import Photograph from "../components/artwork_comps/Photograph";

@@ -1,0 +1,30 @@
+// COLORS
+
+$primary-theme: #ff6624;
+$secondary-theme: #91e4fb;
+
+// FONTS
+
+$helv: Helvetica, Verdana, sans-serif;
+$source-code: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+
+// GENERAL
+
+* {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: $source-code;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  font-family: $helv;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

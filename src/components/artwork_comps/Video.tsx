@@ -1,15 +1,11 @@
 import React from "react";
-import { Video } from "../../interfaces/Artwork";
+import { Video } from "../../typing/Artwork";
 
-type VideoPropTypes = {
-  video: Video;
-};
-
-const Video: React.FC<VideoPropTypes> = ({ video }) => {
+const Video: React.FC<Video> = ({ title, isOpenForCritique }) => {
   return (
     <div>
-      <h1>{video.title}</h1>
-      {video.isOpenForCritique && (
+      <h1>{title}</h1>
+      {isOpenForCritique && (
         <div>
           <h2>Critique</h2>
         </div>

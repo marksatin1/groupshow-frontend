@@ -10,10 +10,10 @@ const App = () => {
     <>
       {/* <Newsfeed /> */}
       {/* <Portfolio /> */}
-      {/* <Register /> */}
+      <Register />
       {/* <ResetPassword /> */}
       {/* <Login /> */}
-      <SubmitArtwork />
+      {/* <SubmitArtwork /> */}
     </>
   );
 };

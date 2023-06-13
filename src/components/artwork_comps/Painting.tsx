@@ -1,16 +1,12 @@
 import React from "react";
-import { Painting } from "../../interfaces/Artwork";
+import { Painting } from "../../typing/Artwork";
 
-type PaintingPropTypes = {
-  painting: Painting;
-};
-
-const Painting: React.FC<PaintingPropTypes> = ({ painting }) => {
+const Painting: React.FC<Painting> = ({ title, url, isOpenForCritique }) => {
   return (
     <div>
-      <h1>{painting.title}</h1>
-      <img src={painting.url} alt={painting.title} />
-      {painting.isOpenForCritique && (
+      <h1>{title}</h1>
+      <img src={url} alt={title} />
+      {isOpenForCritique && (
         <div>
           <h2>Critique</h2>
         </div>

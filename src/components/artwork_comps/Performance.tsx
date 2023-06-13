@@ -1,16 +1,12 @@
 import React from "react";
-import { Performance } from "../../interfaces/Artwork";
+import { Performance } from "../../typing/Artwork";
 
-type PerformancePropTypes = {
-  performance: Performance;
-};
-
-const Performance: React.FC<PerformancePropTypes> = ({ performance }) => {
+const Performance: React.FC<Performance> = ({ title, url, isOpenForCritique }) => {
   return (
     <div>
-      <h1>{performance.title}</h1>
-      <video src={performance.url} />
-      {performance.isOpenForCritique && (
+      <h1>{title}</h1>
+      <video src={url} />
+      {isOpenForCritique && (
         <div>
           <h2>Critique</h2>
         </div>

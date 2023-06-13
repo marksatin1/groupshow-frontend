@@ -1,16 +1,12 @@
 import React from "react";
-import { Song } from "../../interfaces/Artwork";
+import { Song } from "../../typing/Artwork";
 
-type SongPropTypes = {
-  song: Song;
-};
-
-const Song: React.FC<SongPropTypes> = ({ song }) => {
+const Song: React.FC<Song> = ({ title, url, isOpenForCritique }) => {
   return (
     <div>
-      <h1>{song.title}</h1>
-      <audio src={song.url} />
-      {song.isOpenForCritique && (
+      <h1>{title}</h1>
+      <audio src={url} />
+      {isOpenForCritique && (
         <div>
           <h2>Critique</h2>
         </div>

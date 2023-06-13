@@ -1,18 +1,14 @@
 import React from "react";
-import { Writing } from "../../interfaces/Artwork";
+import { Writing } from "../../typing/Artwork";
 
-type WritingPropTypes = {
-  writing: Writing;
-};
-
-const Writing: React.FC<WritingPropTypes> = ({ writing }) => {
+const Writing: React.FC<Writing> = ({ title, url, isOpenForCritique }) => {
   return (
     <div>
-      <h1>{writing.title}</h1>
+      <h1>{title}</h1>
       <div>
-        <p>{writing.url}</p>
+        <p>{url}</p>
       </div>
-      {writing.isOpenForCritique && (
+      {isOpenForCritique && (
         <div>
           <h2>Critique</h2>
         </div>

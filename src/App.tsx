@@ -3,6 +3,7 @@ import Newsfeed from "./pages/Newsfeed";
 import Portfolio from "./pages/Portfolio";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
+import SubmitArtwork from "./pages/SubmitArtwork";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       {/* <Register /> */}
       {/* <ResetPassword /> */}
       {/* <Login /> */}
+      <SubmitArtwork />
     </>
   );
 };

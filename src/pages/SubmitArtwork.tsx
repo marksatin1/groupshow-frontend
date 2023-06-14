@@ -1,18 +1,21 @@
 import { useState, ChangeEvent } from "react";
 import Input from "../components/Input";
 import SubmitButton from "../components/SubmitButton";
+import RadioBox from "../components/RadioBox";
 
-type SubmitArtworkFormData = {
+type ArtworkFormData = {
+  fileUrl: string;
   title: string;
   statement?: string;
-  type: string;
+  artworkType: string;
 };
 
 const SubmitArtwork = () => {
-  const [formData, setFormData] = useState<SubmitArtworkFormData>({
+  const [formData, setFormData] = useState<ArtworkFormData>({
+    fileUrl: "",
     title: "",
     statement: "",
-    type: "",
+    artworkType: "",
   });
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,10 +39,15 @@ const SubmitArtwork = () => {
 
   return (
     <form onSubmit={handleFormSubmission}>
+      <Input type="file" name="File URL" id="fileUrl" onChange={handleInputChange} />
+      <RadioBox
+        name="Artwork Types"
+        id="artworkType"
+        options={["Painting", "Performance", "Photograph", "Song", "Video", "Writing"]}
+        onChange={handleInputChange}
+      />
       <Input type="text" name="Title" id="title" onChange={handleInputChange} />
-      {formData.statement && (
-        <Input type="text" name="Artist Statement" id="statement" onChange={handleInputChange} />
-      )}
+      <Input type="text" name="Artist Statement" id="statement" onChange={handleInputChange} />
       <SubmitButton name="Upload Artwork" />
     </form>
   );

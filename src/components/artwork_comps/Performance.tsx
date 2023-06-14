@@ -1,12 +1,12 @@
 import React from "react";
-import { Performance } from "../../typing/Artwork";
+import { PerformanceProps } from "../../typing/ArtworksPropTypes";
 
-const Performance: React.FC<Performance> = ({ title, url, isOpenForCritique }) => {
+const Performance: React.FC<PerformanceProps> = ({ performance }) => {
   return (
     <div>
-      <h1>{title}</h1>
-      <video src={url} />
-      {isOpenForCritique && (
+      <h1>{performance.title}</h1>
+      <video src={performance.url} />
+      {performance.isOpenForCritique && (
         <div>
           <h2>Critique</h2>
         </div>

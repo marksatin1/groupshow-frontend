@@ -1,5 +1,5 @@
 import React from "react";
-import { Video } from "../../typing/Artwork";
+import { Video } from "../../typing/Artworks";
 
 const Video: React.FC<Video> = ({ title, isOpenForCritique }) => {
   return (

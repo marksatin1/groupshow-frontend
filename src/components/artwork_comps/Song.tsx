@@ -1,5 +1,5 @@
 import React from "react";
-import { Song } from "../../typing/Artwork";
+import { Song } from "../../typing/Artworks";
 
 const Song: React.FC<Song> = ({ title, url, isOpenForCritique }) => {
   return (

@@ -1,4 +1,4 @@
-export interface Critique {
+export interface ICritique {
   id: number;
   rating: number;
   content?: string;

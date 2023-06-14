@@ -1,6 +1,6 @@
-import { Painting, Performance, Photograph, Song, Video, Writing } from "./Artwork";
+import { IPainting, IPerformance, IPhotograph, ISong, IVideo, IWriting } from "./Artworks";
 
-export interface User {
+export interface IUser {
   userID: number;
   role: string;
   email: string;
@@ -11,10 +11,10 @@ export interface User {
   minor?: string;
   gradeLevel: string;
   creationDate: string;
-  paintings?: Painting[];
-  performances?: Performance[];
-  photographs?: Photograph[];
-  songs?: Song[];
-  videos?: Video[];
-  writings?: Writing[];
+  paintings?: IPainting[];
+  performances?: IPerformance[];
+  photographs?: IPhotograph[];
+  songs?: ISong[];
+  Ivideos?: IVideo[];
+  writings?: IWriting[];
 }

@@ -1,12 +1,12 @@
 import React from "react";
-import { Photograph } from "../../typing/Artwork";
+import { PhotographProps } from "../../typing/ArtworksPropTypes";
 
-const Photograph: React.FC<Photograph> = ({ title, url, isOpenForCritique }) => {
+const Photograph: React.FC<PhotographProps> = ({ photograph }) => {
   return (
     <div>
-      <h1>{title}</h1>
-      <img src={url} alt={title} />
-      {isOpenForCritique && (
+      <h1>{photograph.title}</h1>
+      <img src={photograph.url} alt={photograph.title} />
+      {photograph.isOpenForCritique && (
         <div>
           <h2>Critique</h2>
         </div>

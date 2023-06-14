@@ -1,11 +1,12 @@
 import SelectMenu from "../SelectMenu";
-import { ExtraArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
 
-const PaintingOptions: React.FC<ExtraArtworkOptionsProps> = ({ onChange }) => {
+const PaintingOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
   return (
     <>
       <SelectMenu
-        name="paintingGenre"
+        id="paintingGenre"
+        defaultOption="Genre"
         options={["Oil", "Watercolor", "Acrylic"]}
         onChange={onChange}
       />

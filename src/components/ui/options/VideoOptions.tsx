@@ -1,11 +1,12 @@
-import { ExtraArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
 import SelectMenu from "../SelectMenu";
 
-const VideoOptions: React.FC<ExtraArtworkOptionsProps> = ({ onChange }) => {
+const VideoOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
   return (
     <>
       <SelectMenu
-        name="videoGenre"
+        id="videoGenre"
+        defaultOption="Genre"
         options={["Short", "Feature", "Commercial", "Music Video", "Experimental"]}
         onChange={onChange}
       />

@@ -1,6 +1,6 @@
-import { ExtraArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
 
-const SongOptions: React.FC<ExtraArtworkOptionsProps> = ({ onChange }) => {
+const SongOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
   return (
     <>
       <input

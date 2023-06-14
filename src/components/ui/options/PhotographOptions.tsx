@@ -1,7 +1,7 @@
-import { ExtraArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
 import RadioBox from "../RadioBox";
 
-const PhotographOptions: React.FC<ExtraArtworkOptionsProps> = ({ onChange }) => {
+const PhotographOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
   return (
     <>
       <RadioBox id="isPrint" options={["True", "False"]} onChange={onChange} />

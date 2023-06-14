@@ -8,10 +8,10 @@ import SubmitArtwork from "./pages/SubmitArtwork";
 const App = () => {
   return (
     <>
-      <Newsfeed />
+      {/* <Newsfeed /> */}
       {/* <Portfolio /> */}
       {/* <Register /> */}
-      {/* <ResetPassword /> */}
+      <ResetPassword />
       {/* <Login /> */}
       {/* <SubmitArtwork /> */}
     </>

@@ -1,11 +1,12 @@
-import { ExtraArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
 import SelectMenu from "../SelectMenu";
 
-const PerformanceOptions: React.FC<ExtraArtworkOptionsProps> = ({ onChange }) => {
+const PerformanceOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
   return (
     <>
       <SelectMenu
-        name="performanceGenre"
+        id="performanceGenre"
+        defaultOption="Genre"
         options={["Ballet", "Classical", "Modern"]}
         onChange={onChange}
       />

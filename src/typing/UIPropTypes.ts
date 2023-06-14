@@ -46,6 +46,11 @@ export type RegisterFormProps = {
   minor: string;
 };
 
+export type ResetPasswordFormProps = {
+  password: string;
+  passwordConfirmation: string;
+};
+
 export type SelectMenuProps = {
   id: string;
   defaultOption: string;

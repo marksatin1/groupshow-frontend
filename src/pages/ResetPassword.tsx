@@ -1,14 +1,11 @@
 import { useState, ChangeEvent } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
-
-type ResetPasswordFormData = {
-  password: string;
-  passwordConfirmation: string;
-};
+import Form from "../components/ui/Form";
+import { ResetPasswordFormProps } from "../typing/UIPropTypes";
 
 const ResetPassword = () => {
-  const [formData, setFormData] = useState<ResetPasswordFormData>({
+  const [formData, setFormData] = useState<ResetPasswordFormProps>({
     password: "",
     passwordConfirmation: "",
   });
@@ -35,7 +32,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
+    <Form title="Reset Password" onSubmit={handleFormSubmission}>
       <Input type="text" id="password" placeholder="Password" onChange={handleInputChange} />
       <Input
         type="text"
@@ -44,7 +41,7 @@ const ResetPassword = () => {
         onChange={handleInputChange}
       />
       <SubmitButton name="Reset Password" />
-    </form>
+    </Form>
   );
 };
 

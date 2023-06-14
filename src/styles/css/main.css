@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  font-family: Helvetica, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form h1 {
+  text-align: center;
+}
+.form form {
+  min-height: 50vh;
+  min-width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 2rem;
+  border: 5px solid #91e4fb;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 20px 3px inset #91e4fb;
+}
+.form form * {
+  font-size: 1.3rem;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,4 +1,3 @@
-import React from "react";
 import ProfilePicture from "./ProfilePicture";
 import SearchBar from "./SearchBar";
 import HamburgerMenu from "./HamburgerMenu";

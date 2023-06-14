@@ -1,14 +1,11 @@
 import { useState, ChangeEvent } from "react";
-import Input from "../components/Input";
-import SubmitButton from "../components/SubmitButton";
-
-type LoginFormData = {
-  email: string;
-  password: string;
-};
+import Input from "../components/ui/Input";
+import SubmitButton from "../components/ui/SubmitButton";
+import { LoginFormProps } from "../typing/UIPropTypes";
+import Form from "../components/ui/Form";
 
 const Login = () => {
-  const [formData, setFormData] = useState<LoginFormData>({
+  const [formData, setFormData] = useState<LoginFormProps>({
     email: "",
     password: "",
   });
@@ -33,11 +30,11 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
-      <Input type="text" name="Email" id="email" onChange={handleInputChange} />
-      <Input type="text" name="Password" id="password" onChange={handleInputChange} />
+    <Form title="Login" onSubmit={handleFormSubmission}>
+      <Input type="text" id="email" placeholder="Email" onChange={handleInputChange} />
+      <Input type="password" id="password" placeholder="Password" onChange={handleInputChange} />
       <SubmitButton name="Login" />
-    </form>
+    </Form>
   );
 };
 

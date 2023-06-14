@@ -1,11 +1,8 @@
 import React from "react";
-import { Painting } from "../../interfaces/Artwork";
+import { PaintingProps } from "../../typing/ArtworksPropTypes";
 
-type PaintingPropTypes = {
-  painting: Painting;
-};
 
-const Painting: React.FC<PaintingPropTypes> = ({ painting }) => {
+const Painting: React.FC<PaintingProps> = ({ painting }) => {
   return (
     <div>
       <h1>{painting.title}</h1>

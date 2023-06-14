@@ -1,11 +1,7 @@
 import React from "react";
-import { Photograph } from "../../interfaces/Artwork";
+import { PhotographProps } from "../../typing/ArtworksPropTypes";
 
-type PhotographPropTypes = {
-  photograph: Photograph;
-};
-
-const Photograph: React.FC<PhotographPropTypes> = ({ photograph }) => {
+const Photograph: React.FC<PhotographProps> = ({ photograph }) => {
   return (
     <div>
       <h1>{photograph.title}</h1>

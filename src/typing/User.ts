@@ -2,9 +2,9 @@ import { IPainting, IPerformance, IPhotograph, ISong, IVideo, IWriting } from ".
 
 export interface IUser {
   userID: number;
-  role: string;
+  userRole: string;
   email: string;
-  password?: string;
+  password: string;
   firstName: string;
   lastName: string;
   major?: string;
@@ -15,6 +15,6 @@ export interface IUser {
   performances?: IPerformance[];
   photographs?: IPhotograph[];
   songs?: ISong[];
-  Ivideos?: IVideo[];
+  videos?: IVideo[];
   writings?: IWriting[];
 }

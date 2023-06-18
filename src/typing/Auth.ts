@@ -1,11 +1,11 @@
 import { IUser } from "./User";
 
 export interface IAuthContext {
-  currentUser: IUser | undefined;
+  currentUser: IUser | void;
   registerNewUser: ({ registerForm }: RegisterFormProps) => Promise<boolean | void>;
   resetPassword: ({ resetPasswordForm }: ResetPasswordFormProps) => Promise<boolean | void>;
   login: ({ loginForm }: LoginFormProps) => Promise<IAuthContext | void>;
-  logout: () => void;
+  logout: () => Promise<boolean | void>;
 }
 
 export interface IRegisterForm {
@@ -44,5 +44,6 @@ export type LoginFormProps = {
 
 export interface IAuthResponse {
   user: IUser;
-  jwtToken: string;
+  jwtAccessToken: string;
+  jwtRefreshToken: string;
 }

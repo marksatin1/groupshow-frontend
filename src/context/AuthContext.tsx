@@ -11,7 +11,7 @@ const AuthContext = createContext<IAuthContext>({
   registerNewUser: ({}: RegisterFormProps) => Promise.resolve(),
   resetPassword: ({}: ResetPasswordFormProps) => Promise.resolve(),
   login: ({}: LoginFormProps) => Promise.resolve(),
-  logout: () => {},
+  logout: () => Promise.resolve(),
 });
 
 export default AuthContext;

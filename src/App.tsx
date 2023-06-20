@@ -11,8 +11,8 @@ const App = () => {
       {/* <Newsfeed /> */}
       {/* <Portfolio /> */}
       {/* <Register /> */}
-      <ResetPassword />
-      {/* <Login /> */}
+      {/* <ResetPassword /> */}
+      <Login />
       {/* <SubmitArtwork /> */}
     </>
   );

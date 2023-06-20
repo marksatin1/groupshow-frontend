@@ -25,30 +25,10 @@ export type InputProps = {
   onChange: ChangeEventHandler;
 };
 
-export type LoginFormProps = {
-  email: string;
-  password: string;
-};
-
 export type RadioBoxProps = {
   id: string;
   options: string[];
   onChange: ChangeEventHandler;
-};
-
-export type RegisterFormProps = {
-  userRole: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  gradeLevel: string;
-  major: string;
-  minor: string;
-};
-
-export type ResetPasswordFormProps = {
-  password: string;
-  passwordConfirmation: string;
 };
 
 export type SelectMenuProps = {

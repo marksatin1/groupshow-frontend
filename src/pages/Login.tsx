@@ -1,32 +1,29 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useContext } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
-import { LoginFormProps } from "../typing/UIPropTypes";
 import Form from "../components/ui/Form";
+import { ILoginForm } from "../typing/Auth";
+import AuthContext from "../context/AuthContext";
 
 const Login = () => {
-  const [formData, setFormData] = useState<LoginFormProps>({
+  const [formData, setFormData] = useState<ILoginForm>({
     email: "",
     password: "",
   });
+  const authCtx = useContext(AuthContext);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
 
-    setFormData(prev => ({ ...prev, [id]: value }));
+    setFormData((prev: ILoginForm) => ({ ...prev, [id]: value }));
   };
 
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
 
-    console.log(formData);
+    console.log({ formData });
 
-    // try {
-    //   const { data: loginData }: any = await axInst.post("/user/login", formData);
-    //   console.log(loginData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    await authCtx.login({ loginForm: { email: formData.email, password: formData.password } });
   };
 
   return (

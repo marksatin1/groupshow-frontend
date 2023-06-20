@@ -1,13 +1,15 @@
+import { ChangeEvent, useContext, useState } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
-import { ChangeEvent, useState } from "react";
 import Form from "../components/ui/Form";
-import { RegisterFormProps } from "../typing/UIPropTypes";
-import { axInst } from "../config/axiosInstance";
+import { IRegisterForm } from "../typing/Auth";
 import SelectMenu from "../components/ui/SelectMenu";
+import AuthContext from "../context/AuthContext";
 
 const Register = () => {
-  const [formData, setFormData] = useState<RegisterFormProps>({
+  const { registerNewUser } = useContext(AuthContext);
+
+  const [formData, setFormData] = useState<IRegisterForm>({
     userRole: "",
     firstName: "",
     lastName: "",
@@ -26,14 +28,9 @@ const Register = () => {
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
 
-    console.log(formData);
+    console.log(e);
 
-    // try {
-    //   const { data: userData }: any = await axInst.post("/user/register", formData);
-    //   console.log(userData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    // registerNewUser(formData);
   };
 
   return (

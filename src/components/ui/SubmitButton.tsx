@@ -1,8 +1,4 @@
-import React from "react";
-
-type SubmitButtonProps = {
-  name: string;
-};
+import { SubmitButtonProps } from "../../typing/UIPropTypes";
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({ name }) => {
   return <button type="submit">{name}</button>;

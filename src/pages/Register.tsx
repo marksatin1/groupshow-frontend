@@ -1,21 +1,15 @@
-import RadioBox from "../components/RadioBox";
-import Input from "../components/Input";
-import SubmitButton from "../components/SubmitButton";
-import { ChangeEvent, useState } from "react";
-import { axInst } from "../config/axiosInstance";
-
-type RegisterFormData = {
-  userRole: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  gradeLevel: string;
-  major: string;
-  minor: string;
-};
+import { ChangeEvent, useContext, useState } from "react";
+import Input from "../components/ui/Input";
+import SubmitButton from "../components/ui/SubmitButton";
+import Form from "../components/ui/Form";
+import { IRegisterForm } from "../typing/Auth";
+import SelectMenu from "../components/ui/SelectMenu";
+import AuthContext from "../context/AuthContext";
 
 const Register = () => {
-  const [formData, setFormData] = useState<RegisterFormData>({
+  const { registerNewUser } = useContext(AuthContext);
+
+  const [formData, setFormData] = useState<IRegisterForm>({
     userRole: "",
     firstName: "",
     lastName: "",
@@ -34,35 +28,32 @@ const Register = () => {
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
 
-    // try {
-    //   const { data: userData }: any = await axInst.post("/user/register", formData);
-    //   console.log(userData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    console.log(e);
+
+    // registerNewUser(formData);
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
-      <RadioBox
-        name="userRole"
+    <Form title="Register A New User" onSubmit={handleFormSubmission}>
+      <SelectMenu
         id="userRole"
+        defaultOption="User Role"
         options={["Student", "Teacher"]}
         onChange={handleInputChange}
       />
-      <Input type="text" name="First Name" id="firstName" onChange={handleInputChange} />
-      <Input type="text" name="Last Name" id="lastName" onChange={handleInputChange} />
-      <Input type="text" name="Email" id="email" onChange={handleInputChange} />
-      <RadioBox
-        name="gradeLevel"
+      <Input type="text" id="firstName" placeholder="First Name" onChange={handleInputChange} />
+      <Input type="text" id="lastName" placeholder="Last Name" onChange={handleInputChange} />
+      <Input type="text" id="email" placeholder="Email" onChange={handleInputChange} />
+      <SelectMenu
         id="gradeLevel"
+        defaultOption="Grade Level"
         options={["Freshman", "Sophomore", "Junior", "Senior"]}
         onChange={handleInputChange}
       />
-      <Input type="text" name="Major" id="major" onChange={handleInputChange} />
-      <Input type="text" name="Minor" id="minor" onChange={handleInputChange} />
+      <Input type="text" id="major" placeholder="Major" onChange={handleInputChange} />
+      <Input type="text" id="minor" placeholder="Major" onChange={handleInputChange} />
       <SubmitButton name="Register" />
-    </form>
+    </Form>
   );
 };
 

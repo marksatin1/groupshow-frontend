@@ -1,43 +1,37 @@
-import { useState, ChangeEvent } from "react";
-import Input from "../components/Input";
-import SubmitButton from "../components/SubmitButton";
-
-type LoginFormData = {
-  email: string;
-  password: string;
-};
+import { useState, ChangeEvent, useContext } from "react";
+import Input from "../components/ui/Input";
+import SubmitButton from "../components/ui/SubmitButton";
+import Form from "../components/ui/Form";
+import { ILoginForm } from "../typing/Auth";
+import AuthContext from "../context/AuthContext";
 
 const Login = () => {
-  const [formData, setFormData] = useState<LoginFormData>({
+  const [formData, setFormData] = useState<ILoginForm>({
     email: "",
     password: "",
   });
+  const authCtx = useContext(AuthContext);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
 
-    setFormData(prev => ({ ...prev, [id]: value }));
+    setFormData((prev: ILoginForm) => ({ ...prev, [id]: value }));
   };
 
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
 
-    console.log(formData);
+    console.log({ formData });
 
-    // try {
-    //   const { data: loginData }: any = await axInst.post("/user/login", formData);
-    //   console.log(loginData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    await authCtx.login({ loginForm: { email: formData.email, password: formData.password } });
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
-      <Input type="text" name="Email" id="email" onChange={handleInputChange} />
-      <Input type="text" name="Password" id="password" onChange={handleInputChange} />
+    <Form title="Login" onSubmit={handleFormSubmission}>
+      <Input type="text" id="email" placeholder="Email" onChange={handleInputChange} />
+      <Input type="password" id="password" placeholder="Password" onChange={handleInputChange} />
       <SubmitButton name="Login" />
-    </form>
+    </Form>
   );
 };
 

@@ -1,6 +1,9 @@
-export interface Artwork {
-  artworkType: string;
+import { IUser } from "./User";
+
+export interface IArtwork {
   artworkID: number;
+  artist: IUser;
+  artworkType: string;
   title: string;
   statement?: string;
   submissionDate: string;
@@ -9,38 +12,38 @@ export interface Artwork {
   isOpenForCritique: boolean;
 }
 
-export interface Painting extends Artwork {
+export interface IPainting extends IArtwork {
   genre: string;
   widthInches: number;
   heightInches: number;
 }
 
-export interface Performance extends Artwork {
+export interface IPerformance extends IArtwork {
   genre: string;
   durationHour: number;
   durationMin: number;
   durationSec: number;
 }
 
-export interface Photograph extends Artwork {
+export interface IPhotograph extends IArtwork {
   isPrint: boolean;
   widthInches: number;
   heightInches: number;
 }
 
-export interface Song extends Artwork {
+export interface ISong extends IArtwork {
   durationMin: number;
   durationSec: number;
 }
 
-export interface Video extends Artwork {
+export interface IVideo extends IArtwork {
   genre: string;
   durationHour: number;
   durationMin: number;
   durationSec: number;
 }
 
-export interface Writing extends Artwork {
+export interface IWriting extends IArtwork {
   genre: string;
   isFiction: boolean;
   wordCount: number;

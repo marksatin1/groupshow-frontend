@@ -1,11 +1,7 @@
 import React from "react";
-import { Performance } from "../../interfaces/Artwork";
+import { PerformanceProps } from "../../typing/ArtworksPropTypes";
 
-type PerformancePropTypes = {
-  performance: Performance;
-};
-
-const Performance: React.FC<PerformancePropTypes> = ({ performance }) => {
+const Performance: React.FC<PerformanceProps> = ({ performance }) => {
   return (
     <div>
       <h1>{performance.title}</h1>

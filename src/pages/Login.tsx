@@ -21,8 +21,6 @@ const Login = () => {
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
 
-    console.log({ formData });
-
     await authCtx.login({ loginForm: { email: formData.email, password: formData.password } });
   };
 

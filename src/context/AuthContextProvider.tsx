@@ -1,46 +1,49 @@
 import { useEffect, useState } from "react";
 import { axInst } from "../config/axiosInstance";
 import {
-  IAuthResponse,
+  ISessionDetails,
+  IAuthResponseData,
   LoginFormProps,
   RegisterFormProps,
   ResetPasswordFormProps,
 } from "../typing/Auth";
 import AuthContext from "./AuthContext";
-import { IUserDetails } from "../typing/User";
-import jwt from "jsonwebtoken";
 
-const JWT_ACCESS_TOKEN_DURATION_MS = 1000 * 60 * 60;
-const JWT_REFRESH_TOKEN_DURATION_MS = 1000 * 60 * 60 * 24;
+const initSessionDetails = {
+  user: undefined,
+  accessJwt: undefined,
+  accessJwtExpiresOn: "",
+  refreshJwt: null,
+  refreshJwtExpiresOn: "",
+};
 
 const AuthContextProvider = ({ children }: any) => {
-  const [userDetails, setUserDetails] = useState<IUserDetails>({
-    currentUser: undefined,
-    jwtAccessToken: undefined,
-    jwtRefreshToken: undefined,
-    jwtRefreshExpDateMs: undefined,
-  });
-
-  let accessTokenExpTimer: number;
+  const [sessionDetails, setSessionDetails] = useState<ISessionDetails>(initSessionDetails);
 
   useEffect(() => {
-    accessTokenExpTimer = setTimeout(() => {
+    const accessTokenExpTimer = setTimeout(() => {
       // Get a new access token 1 minute before orig access token expires
       if (
-        userDetails.jwtRefreshExpDateMs !== undefined &&
-        userDetails.jwtRefreshExpDateMs < Date.now()
+        sessionDetails.refreshJwtExpiresOn !== "" &&
+        Number(sessionDetails.refreshJwtExpiresOn) < Date.now()
       ) {
         refreshAccessToken();
       } else {
         logout();
       }
-    }, JWT_ACCESS_TOKEN_DURATION_MS - 60000);
-  }, [userDetails.jwtAccessToken]);
+    }, Number(sessionDetails.accessJwtExpiresOn) - 60000);
+
+    return () => {
+      clearTimeout(accessTokenExpTimer);
+    };
+  }, [sessionDetails.accessJwt]);
 
   const registerNewUser = async ({ registerForm }: RegisterFormProps) => {
     try {
       const { data: success } = await axInst.post<boolean | void>("/auth/register", registerForm);
       console.log(success);
+
+      // if success is true, redirect
     } catch (e) {
       console.error(e);
     }
@@ -53,6 +56,8 @@ const AuthContextProvider = ({ children }: any) => {
         resetPasswordForm
       );
       console.log(success);
+
+      // if success is true, redirect
     } catch (e) {
       console.error(e);
     }
@@ -60,64 +65,56 @@ const AuthContextProvider = ({ children }: any) => {
 
   const login = async ({ loginForm }: LoginFormProps) => {
     try {
-      const authResponse = await axInst.post<IAuthResponse>("/auth/login", loginForm);
-      console.log(authResponse);
+      const { data, headers }: { data: IAuthResponseData; headers: Headers } = await axInst.post(
+        "/auth/login",
+        loginForm
+      );
 
-      // const decodedJwt = jwt.verify()
-
-      // setUserDetails({
-      //   currentUser: authResponse.user,
-      //   jwtAccessToken: authResponse.jwtAccessToken,
-      //   jwtRefreshToken: authResponse.jwtRefreshToken,
-      //   jwtRefreshExpDateMs: Date.now() + JWT_REFRESH_TOKEN_DURATION_MS,
-      // });
+      setSessionDetails({
+        user: data.user,
+        accessJwt: headers.get("authorization")?.slice(7),
+        accessJwtExpiresOn: data.accessJwtExpiresOn,
+        refreshJwt: headers.get("x-refresh-token"),
+        refreshJwtExpiresOn: data.refreshJwtExpiresOn,
+      });
     } catch (e) {
       console.error(e);
     }
   };
 
   const refreshAccessToken = async () => {
-    try {
-      if (!userDetails.jwtRefreshToken) {
-        throw new Error("Missing jwtRefreshToken");
-      }
+    if (!sessionDetails.refreshJwt || sessionDetails.refreshJwt === null) {
+      throw new Error("Missing Refresh JWT.");
+    }
 
-      const { data: newJwtAccessToken } = await axInst.get<string | void>("/auth/refresh-access", {
+    try {
+      const { data: newAccessJwt } = await axInst.get<string>("/auth/refresh-access", {
         headers: {
-          Authorization: "Bearer " + userDetails.jwtAccessToken,
-          "X-Refresh-Token": userDetails.jwtRefreshToken,
+          Authorization: "Bearer " + sessionDetails.accessJwt,
+          "X-Refresh-Token": sessionDetails.refreshJwt,
         },
       });
-      setUserDetails((prev: IUserDetails) => ({ ...prev, jwtAccessToken: newJwtAccessToken }));
+      setSessionDetails((prev: ISessionDetails) => ({ ...prev, accessJwt: newAccessJwt }));
     } catch (e) {
       console.error(e);
     }
   };
 
   const logout = async () => {
-    const { data: success } = await axInst.get<boolean | void>("/auth/logout", {
+    const { data: success } = await axInst.get<boolean>("/auth/logout", {
       headers: {
-        Authorization: "Bearer " + userDetails.jwtAccessToken,
+        Authorization: "Bearer " + sessionDetails.accessJwt,
       },
     });
 
     if (success) {
-      setUserDetails({
-        currentUser: undefined,
-        jwtAccessToken: undefined,
-        jwtRefreshToken: undefined,
-        jwtRefreshExpDateMs: undefined,
-      });
-
-      clearTimeout(accessTokenExpTimer);
-
+      setSessionDetails(initSessionDetails);
       // redirect to homepage
     }
   };
 
   const authContext = {
-    // accessToken: userDetails.jwtAccessToken,
-    currentUser: userDetails.currentUser,
+    user: sessionDetails.user,
     registerNewUser,
     resetPassword,
     login,

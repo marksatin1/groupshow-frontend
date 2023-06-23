@@ -18,10 +18,3 @@ export interface IUser {
   videos?: IVideo[];
   writings?: IWriting[];
 }
-
-export interface IUserDetails {
-  currentUser: IUser | void;
-  jwtAccessToken: string | void;
-  jwtRefreshToken: string | void;
-  jwtRefreshExpDateMs: number | void;
-}

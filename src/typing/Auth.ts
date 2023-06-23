@@ -1,7 +1,7 @@
 import { IUser } from "./User";
 
 export interface IAuthContext {
-  currentUser: IUser | void;
+  user: IUser | void;
   registerNewUser: ({ registerForm }: RegisterFormProps) => Promise<boolean | void>;
   resetPassword: ({ resetPasswordForm }: ResetPasswordFormProps) => Promise<boolean | void>;
   login: ({ loginForm }: LoginFormProps) => Promise<IAuthContext | void>;
@@ -42,8 +42,16 @@ export type LoginFormProps = {
   loginForm: ILoginForm;
 };
 
-export interface IAuthResponse {
-  user: IUser;
-  jwtAccessToken: string;
-  jwtRefreshToken: string;
+export interface ISessionDetails {
+  user: IUser | undefined;
+  accessJwt: string | undefined;
+  accessJwtExpiresOn: string;
+  refreshJwt: string | null;
+  refreshJwtExpiresOn: string;
+}
+
+export interface IAuthResponseData {
+  user: IUser | undefined;
+  accessJwtExpiresOn: string;
+  refreshJwtExpiresOn: string;
 }

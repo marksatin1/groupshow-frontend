@@ -7,7 +7,7 @@ import {
 } from "../typing/Auth";
 
 const AuthContext = createContext<IAuthContext>({
-  currentUser: undefined,
+  user: undefined,
   registerNewUser: ({}: RegisterFormProps) => Promise.resolve(),
   resetPassword: ({}: ResetPasswordFormProps) => Promise.resolve(),
   login: ({}: LoginFormProps) => Promise.resolve(),

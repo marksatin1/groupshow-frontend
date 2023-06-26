@@ -4,6 +4,7 @@ import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
 import { ILoginForm } from "../typing/Auth";
 import AuthContext from "../context/AuthContext";
+import NavBar from "../components/ui/NavBar";
 
 const Login = () => {
   const [formData, setFormData] = useState<ILoginForm>({
@@ -25,11 +26,14 @@ const Login = () => {
   };
 
   return (
-    <Form title="Login" onSubmit={handleFormSubmission}>
-      <Input type="text" id="email" placeholder="Email" onChange={handleInputChange} />
-      <Input type="password" id="password" placeholder="Password" onChange={handleInputChange} />
-      <SubmitButton name="Login" />
-    </Form>
+    <>
+      <NavBar />
+      <Form title="Login" onSubmit={handleFormSubmission}>
+        <Input type="text" id="email" placeholder="Email" onChange={handleInputChange} />
+        <Input type="password" id="password" placeholder="Password" onChange={handleInputChange} />
+        <SubmitButton name="Login" />
+      </Form>
+    </>
   );
 };
 

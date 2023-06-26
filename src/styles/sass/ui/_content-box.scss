@@ -1,0 +1,14 @@
+.content-box {
+  border: 1px solid black;
+  width: 90vw;
+  margin: 5rem auto;
+
+  &--title {
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+
+  &--content {
+    padding: 1rem;
+  }
+}

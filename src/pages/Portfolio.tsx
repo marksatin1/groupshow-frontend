@@ -10,6 +10,8 @@ import Video from "../components/artwork_comps/Video";
 import Writing from "../components/artwork_comps/Writing";
 import { MixedArtworks } from "../typing/ArtworksPropTypes";
 import { IPainting, IPerformance, IPhotograph, ISong, IVideo, IWriting } from "../typing/Artworks";
+import BusinessCard from "../components/ui/BusinessCard";
+import ContentBox from "../components/ui/ContentBox";
 
 const Portfolio = () => {
   const [artworks, setArtworks] = useState<MixedArtworks>([]);
@@ -51,7 +53,45 @@ const Portfolio = () => {
   return (
     <>
       <NavBar />
-      <div>{artworksToMap}</div>
+      <BusinessCard />
+      <ContentBox
+        title="About The Artist"
+        content=" Lorem ipsum dolor, sit amet consectetur adipisicing elit. In recusandae magnam, et doloribus
+        repellat, doloremque architecto sit perspiciatis nisi, tempore commodi beatae quae minima
+        pariatur odit? Voluptatibus at cum doloribus? Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit."
+      />
+      <div className="artwork-card-container">
+        <div className="artwork-card">
+          <img
+            src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3039&q=80"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+        <div className="artwork-card">
+          <img
+            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+        <div className="artwork-card">
+          <img
+            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+        <div className="artwork-card">
+          <img
+            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+      </div>
+      {/* <div>{artworksToMap}</div> */}
     </>
   );
 };

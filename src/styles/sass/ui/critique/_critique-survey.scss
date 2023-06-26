@@ -1,0 +1,17 @@
+.critique-survey {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  margin-top: 1rem;
+
+  .score {
+    position: absolute;
+    right: 0;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: lightgray;
+    font-weight: bolder;
+    padding: 0 0.5rem;
+  }
+}

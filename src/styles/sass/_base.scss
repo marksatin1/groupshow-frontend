@@ -19,11 +19,12 @@ code {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   margin: 0;
   height: 100vh;
+  // overflow: hidden;
   font-family: $helv;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

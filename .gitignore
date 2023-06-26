@@ -23,5 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Configs
+package.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+
 # Other
 .env

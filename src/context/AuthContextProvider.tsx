@@ -25,7 +25,7 @@ const AuthContextProvider = ({ children }: any) => {
       // Get a new access token 1 minute before orig access token expires
       if (
         sessionDetails.refreshJwtExpiresOn !== "" &&
-        Number(sessionDetails.refreshJwtExpiresOn) < Date.now()
+        Number(sessionDetails.refreshJwtExpiresOn) < Date.now() // make sure this compares Epoch ms and not datetime
       ) {
         refreshAccessToken();
       } else {

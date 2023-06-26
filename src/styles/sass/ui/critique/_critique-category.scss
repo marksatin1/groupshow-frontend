@@ -1,0 +1,16 @@
+.critique-category {
+  .content-head {
+    display: flex;
+    font-weight: bolder;
+    color: lightgray;
+    gap: 2rem;
+  }
+
+  .content-body {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}

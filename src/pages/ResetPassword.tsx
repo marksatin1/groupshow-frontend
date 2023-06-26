@@ -3,6 +3,7 @@ import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
 import { ResetPasswordFormProps } from "../typing/UIPropTypes";
+import NavBar from "../components/ui/NavBar";
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState<ResetPasswordFormProps>({
@@ -32,16 +33,19 @@ const ResetPassword = () => {
   };
 
   return (
-    <Form title="Reset Password" onSubmit={handleFormSubmission}>
-      <Input type="text" id="password" placeholder="Password" onChange={handleInputChange} />
-      <Input
-        type="text"
-        id="passwordConfirmation"
-        placeholder="Confirm password"
-        onChange={handleInputChange}
-      />
-      <SubmitButton name="Reset Password" />
-    </Form>
+    <>
+      <NavBar />
+      <Form title="Reset Password" onSubmit={handleFormSubmission}>
+        <Input type="text" id="password" placeholder="Password" onChange={handleInputChange} />
+        <Input
+          type="text"
+          id="passwordConfirmation"
+          placeholder="Confirm password"
+          onChange={handleInputChange}
+        />
+        <SubmitButton name="Reset Password" />
+      </Form>
+    </>
   );
 };
 

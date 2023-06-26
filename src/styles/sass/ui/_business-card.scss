@@ -1,0 +1,27 @@
+.business-card {
+  &-container {
+    border: 1px solid black;
+    width: 90vw;
+    margin: 5rem auto;
+    padding: 2rem;
+    display: flex;
+    gap: 3rem;
+  }
+
+  &-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    button {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid black;
+    }
+  }
+}
+
+.pic-size {
+  width: 20rem;
+  height: 20rem;
+}

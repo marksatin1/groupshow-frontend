@@ -1,9 +1,13 @@
-import React from 'react'
-
 const HamburgerMenu = () => {
   return (
-    <div>HamburgerMenu</div>
-  )
-}
+    <div className="hamburger-menu">
+      <img src="" alt="" />
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  );
+};
 
-export default HamburgerMenu
+export default HamburgerMenu;

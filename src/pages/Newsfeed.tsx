@@ -48,7 +48,37 @@ const Newsfeed = () => {
   return (
     <>
       <NavBar />
-      <div>{artworksToMap}</div>
+      {/* <div>{artworksToMap}</div> */}
+      <div className="artwork-card-container">
+        <div className="artwork-card">
+          <img
+            src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3039&q=80"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+        <div className="artwork-card">
+          <img
+            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+        <div className="artwork-card">
+          <img
+            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+        <div className="artwork-card">
+          <img
+            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
+            alt=""
+          />
+          <div className="critique">Critique</div>
+        </div>
+      </div>
     </>
   );
 };

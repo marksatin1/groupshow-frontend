@@ -16,8 +16,8 @@ const App = () => {
       {/* <Register /> */}
       {/* <ResetPassword /> */}
       {/* <Login /> */}
-      <SubmitArtwork />
-      {/* <Artwork /> */}
+      {/* <SubmitArtwork /> */}
+      <Artwork />
     </>
   );
 };

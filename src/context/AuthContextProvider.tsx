@@ -20,6 +20,7 @@ const initSessionDetails = {
 const AuthContextProvider = ({ children }: any) => {
   const [sessionDetails, setSessionDetails] = useState<ISessionDetails>(initSessionDetails);
 
+  // Handles refreshing access Token
   useEffect(() => {
     const accessTokenExpTimer = setTimeout(() => {
       // Get a new access token 1 minute before orig access token expires
@@ -77,6 +78,9 @@ const AuthContextProvider = ({ children }: any) => {
         refreshJwt: headers.get("x-refresh-token"),
         refreshJwtExpiresOn: data.refreshJwtExpiresOn,
       });
+
+      // ! asserts that the authorization header will never be null
+      localStorage.setItem("accessJwt", headers.get("authorization")?.slice(7)!);
     } catch (e) {
       console.error(e);
     }
@@ -95,6 +99,7 @@ const AuthContextProvider = ({ children }: any) => {
         },
       });
       setSessionDetails((prev: ISessionDetails) => ({ ...prev, accessJwt: newAccessJwt }));
+      localStorage.setItem("accessJwt", newAccessJwt);
     } catch (e) {
       console.error(e);
     }
@@ -115,9 +120,11 @@ const AuthContextProvider = ({ children }: any) => {
 
   const authContext = {
     user: sessionDetails.user,
+    accessJwt: sessionDetails.accessJwt,
     registerNewUser,
     resetPassword,
     login,
+    refreshAccessToken,
     logout,
   };
 

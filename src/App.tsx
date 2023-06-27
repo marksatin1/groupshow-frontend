@@ -7,16 +7,30 @@ import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import SubmitArtwork from "./pages/SubmitArtwork";
 import Artwork from "./pages/Artwork";
+import { useContext } from "react";
+import ArtworkContext from "./context/ArtworkContext";
+import AuthContext from "./context/AuthContext";
 
 const App = () => {
+  const {
+    getTwentyMostRecentArtworks,
+    getSingleArtwork,
+    getAllArtworkByUserID,
+    setCritiqueStatus,
+    uploadArtwork,
+  } = useContext(ArtworkContext);
+
+  // getTwentyMostRecentArtworks();
+  getSingleArtwork(1);
+
   return (
     <>
       {/* <Newsfeed /> */}
       {/* <Portfolio /> */}
       {/* <Register /> */}
       {/* <ResetPassword /> */}
-      {/* <Login /> */}
-      <SubmitArtwork />
+      <Login />
+      {/* <SubmitArtwork /> */}
       {/* <Artwork /> */}
     </>
   );

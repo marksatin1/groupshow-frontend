@@ -15,9 +15,7 @@ const ArtworkContextProvider = ({ children }: any) => {
 
   const getSingleArtwork = async (artworkID: number) => {
     try {
-      const { data: artwork } = await axInstAccess.get<IArtwork | void>(
-        `/artwork?artworkID=${artworkID}`
-      );
+      const { data: artwork } = await axInst.get<IArtwork | void>(`/artwork/${artworkID}`);
       console.log(artwork);
     } catch (e) {
       console.error(e);
@@ -26,9 +24,7 @@ const ArtworkContextProvider = ({ children }: any) => {
 
   const getAllArtworkByUserID = async (userID: number) => {
     try {
-      const { data: artwork } = await axInstAccess.get<IArtwork[] | void>(
-        `/artwork/all?userID=${userID}`
-      );
+      const { data: artwork } = await axInst.get<IArtwork[] | void>(`/artwork/all/${userID}`);
       console.log(artwork);
     } catch (e) {
       console.error(e);
@@ -37,8 +33,8 @@ const ArtworkContextProvider = ({ children }: any) => {
 
   const setCritiqueStatus = async (artworkID: number, critiqueStatus: string) => {
     try {
-      const { data } = await axInstAccess.get<boolean | void>(
-        `/artwork?artworkID=${artworkID}&critiqueStatus=${critiqueStatus}`
+      const { data } = await axInst.get<boolean | void>(
+        `artwork/set-status/${artworkID}/${critiqueStatus}`
       );
       console.log(data);
     } catch (e) {

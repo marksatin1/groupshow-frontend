@@ -21,23 +21,23 @@ const AuthContextProvider = ({ children }: any) => {
   const [sessionDetails, setSessionDetails] = useState<ISessionDetails>(initSessionDetails);
 
   // Handles refreshing access Token
-  useEffect(() => {
-    const accessTokenExpTimer = setTimeout(() => {
-      // Get a new access token 1 minute before orig access token expires
-      if (
-        sessionDetails.refreshJwtExpiresOn !== "" &&
-        Number(sessionDetails.refreshJwtExpiresOn) < Date.now() // make sure this compares Epoch ms and not datetime
-      ) {
-        refreshAccessToken();
-      } else {
-        logout();
-      }
-    }, Number(sessionDetails.accessJwtExpiresOn) - 60000);
+  // useEffect(() => {
+  //   const accessTokenExpTimer = setTimeout(() => {
+  //     // Get a new access token 1 minute before orig access token expires
+  //     if (
+  //       sessionDetails.refreshJwtExpiresOn !== "" &&
+  //       Number(sessionDetails.refreshJwtExpiresOn) < Date.now() // make sure this compares Epoch ms and not datetime
+  //     ) {
+  //       refreshAccessToken();
+  //     } else {
+  //       logout();
+  //     }
+  //   }, Number(sessionDetails.accessJwtExpiresOn) - 60000);
 
-    return () => {
-      clearTimeout(accessTokenExpTimer);
-    };
-  }, [sessionDetails.accessJwt]);
+  //   return () => {
+  //     clearTimeout(accessTokenExpTimer);
+  //   };
+  // }, [sessionDetails.accessJwt]);
 
   const registerNewUser = async ({ registerForm }: RegisterFormProps) => {
     try {
@@ -71,6 +71,9 @@ const AuthContextProvider = ({ children }: any) => {
         loginForm
       );
 
+      console.log(data);
+      console.log(headers);
+
       setSessionDetails({
         user: data.user,
         accessJwt: headers.get("authorization")?.slice(7),
@@ -94,7 +97,6 @@ const AuthContextProvider = ({ children }: any) => {
     try {
       const { data: newAccessJwt } = await axInst.get<string>("/auth/refresh-access", {
         headers: {
-          Authorization: "Bearer " + sessionDetails.accessJwt,
           "X-Refresh-Token": sessionDetails.refreshJwt,
         },
       });
@@ -114,6 +116,7 @@ const AuthContextProvider = ({ children }: any) => {
 
     if (success) {
       setSessionDetails(initSessionDetails);
+      localStorage.clear();
       // redirect to homepage
     }
   };

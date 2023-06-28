@@ -21,7 +21,40 @@ const App = () => {
   } = useContext(ArtworkContext);
 
   // getTwentyMostRecentArtworks();
-  getSingleArtwork(1);
+  // getSingleArtwork(1);
+  // getAllArtworkByUserID(1);
+  // setCritiqueStatus(1, "open");
+  uploadArtwork({
+    artworkFormData: {
+      title: "PaintingTitle",
+      artworkType: "painting",
+      statement: "PaintingArtistStatement",
+      artist: {
+        userID: 1,
+        userRole: "STUDENT",
+        firstName: "Mark",
+        lastName: "Satin",
+        email: "mark@test.com",
+        password: "newPassword",
+        gradeLevel: "SENIOR",
+        major: "Software Development",
+        minor: "Film Production",
+        creationDate: "",
+      },
+      url: "PaintingBucketUrl",
+      isOpenForCritique: false,
+      genre: "OIL",
+      units: "IN",
+      widthInches: 24.0,
+      heightInches: 36.0,
+      artworkID: 1,
+      submissionDate: "",
+      averageScore: 8,
+    },
+  });
+
+  // const { refreshAccessToken } = useContext(AuthContext);
+  // refreshAccessToken();
 
   return (
     <>

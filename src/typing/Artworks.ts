@@ -52,6 +52,7 @@ export interface IWriting extends IArtwork {
 
 export interface IUploadArtwork extends IArtwork {
   genre?: string;
+  units: string;
   widthInches?: number;
   heightInches?: number;
   durationHour?: number;

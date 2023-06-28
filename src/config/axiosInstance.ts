@@ -10,6 +10,6 @@ export const axInst = axios.create({
 export const axInstAccess = axios.create({
   baseURL,
   headers: {
-    Authorization: "Bearer " + accessJwt,
+    Authorization: `Bearer ${accessJwt}`,
   },
 });

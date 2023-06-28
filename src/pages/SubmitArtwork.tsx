@@ -30,12 +30,7 @@ const SubmitArtwork = () => {
 
     console.log(formData);
 
-    // try {
-    //   const { data: artworkData }: any = await axInst.post(`/${artworkType}/upload`, formData);
-    //   console.log(artworkData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    // submit artwork method via artworkContext
   };
 
   return (

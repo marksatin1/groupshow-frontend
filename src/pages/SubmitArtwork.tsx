@@ -35,7 +35,8 @@ const SubmitArtwork = () => {
   };
 
   return (
-    <Form title="Submit Your Art!" onSubmit={handleFormSubmission}>
+    
+    <Form className="form" title="Submit Your Art!" onSubmit={handleFormSubmission}>
       <Input type="file" id="fileUrl" onChange={handleInputChange} />
       <SelectMenu
         id="artworkType"
@@ -55,6 +56,7 @@ const SubmitArtwork = () => {
       <textarea name="artistStatement" id="artistStatement" onChange={handleInputChange} />
       <SubmitButton name="Submit" />
     </Form>
+    
   );
 };
 

@@ -1,13 +1,13 @@
 import ArtworkContext from "./ArtworkContext";
 import { axInst } from "../config/axiosInstance";
 import { IArtwork } from "../interfaces/Artwork";
-import { MixedArtworks } from "../types/ArtworkPropTypes";
+import { SpecificArtwork } from "../types/ArtworkPropTypes";
 import { SubmitArtworkFormPropTypes } from "../types/FormPropTypes";
 
 const ArtworkContextProvider = ({ children }: any) => {
   const getTwentyMostRecentArtworks = async () => {
     try {
-      const { data: artworks } = await axInst.get<MixedArtworks[] | void>("/artwork/get-twenty");
+      const { data: artworks } = await axInst.get<SpecificArtwork[] | void>("/artwork/get-twenty");
       console.log(`Last 20 submitted artworks: ${artworks}`);
     } catch (e) {
       console.error(e);
@@ -25,7 +25,9 @@ const ArtworkContextProvider = ({ children }: any) => {
 
   const getAllArtworksByUserID = async (userID: number) => {
     try {
-      const { data: artworks } = await axInst.get<MixedArtworks[] | void>(`/artwork/all/${userID}`);
+      const { data: artworks } = await axInst.get<SpecificArtwork[] | void>(
+        `/artwork/all/${userID}`
+      );
       console.log(`All artworks for User ${userID}: ${artworks}`);
     } catch (e) {
       console.error(e);
@@ -43,11 +45,11 @@ const ArtworkContextProvider = ({ children }: any) => {
     }
   };
 
-  const submitArtwork = async ({ artworkFormData }: SubmitArtworkFormPropTypes) => {
+  const submitArtwork = async ({ submitArtworkFormData }: SubmitArtworkFormPropTypes) => {
     try {
       const { data: isSubmittedSuccessfully } = await axInst.post<boolean | void>(
-        `/${artworkFormData.artworkType}/upload`,
-        artworkFormData
+        `/${submitArtworkFormData.artworkType}/upload`,
+        submitArtworkFormData
       );
       console.log(`Artwork form data is submitted successfully: ${isSubmittedSuccessfully}`);
     } catch (e) {

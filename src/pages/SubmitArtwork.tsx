@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useContext } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
@@ -10,6 +10,7 @@ import SongOptions from "../components/ui/options/SongOptions";
 import VideoOptions from "../components/ui/options/VideoOptions";
 import WritingOptions from "../components/ui/options/WritingOptions";
 import { ISubmitArtworkForm } from "../interfaces/Forms";
+import ArtworkContext from "../context/ArtworkContext";
 
 const SubmitArtwork = () => {
   const [formData, setFormData] = useState<ISubmitArtworkForm>({
@@ -20,6 +21,8 @@ const SubmitArtwork = () => {
     fileUrl: "",
   });
 
+  const { submitArtwork } = useContext(ArtworkContext);
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
 
@@ -28,10 +31,7 @@ const SubmitArtwork = () => {
 
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
-
-    console.log(formData);
-
-    // submit artwork method via artworkContext
+    submitArtwork({ submitArtworkFormData: formData });
   };
 
   return (

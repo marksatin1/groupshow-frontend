@@ -10,6 +10,7 @@ import AuthContext from "./AuthContext";
 
 const initSessionDetails = {
   user: undefined,
+  isSignedIn: false,
   accessJwt: undefined,
   accessJwtExpiresOn: "",
   refreshJwt: null,
@@ -68,6 +69,7 @@ const AuthContextProvider = ({ children }: any) => {
 
       setSessionDetails({
         user: data.user,
+        isSignedIn: true,
         accessJwt: headers.get("authorization")?.slice(7),
         accessJwtExpiresOn: data.accessJwtExpiresOn,
         refreshJwt: headers.get("x-refresh-token"),
@@ -124,6 +126,7 @@ const AuthContextProvider = ({ children }: any) => {
 
   const authContext = {
     user: sessionDetails.user,
+    isSignedIn: sessionDetails.isSignedIn,
     accessJwt: sessionDetails.accessJwt,
     registerNewUser,
     resetPassword,

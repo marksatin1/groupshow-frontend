@@ -3,6 +3,7 @@ import { IAuthContext } from "../interfaces/Context";
 
 const AuthContext = createContext<IAuthContext>({
   user: undefined,
+  isSignedIn: false,
   accessJwt: undefined,
   registerNewUser: () => Promise.resolve(),
   resetPassword: () => Promise.resolve(),

@@ -22,5 +22,5 @@ export type LoginFormPropTypes = {
 };
 
 export type SubmitArtworkFormPropTypes = {
-  artworkFormData: ISubmitArtworkForm;
+  submitArtworkFormData: ISubmitArtworkForm;
 };

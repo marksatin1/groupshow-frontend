@@ -1,5 +1,5 @@
 import { IArtwork } from "./Artwork";
-import { MixedArtworks } from "../types/ArtworkPropTypes";
+import { SpecificArtwork } from "../types/ArtworkPropTypes";
 import {
   LoginFormPropTypes,
   RegisterFormPropTypes,
@@ -9,7 +9,8 @@ import {
 import { IUser } from "./User";
 
 export interface IAuthContext {
-  user: IUser | void;
+  user: IUser | undefined;
+  isSignedIn: boolean;
   accessJwt: string | undefined;
   registerNewUser: ({ registerFormData }: RegisterFormPropTypes) => Promise<boolean | void>;
   resetPassword: ({ resetPasswordFormData }: ResetPasswordFormPropTypes) => Promise<boolean | void>;
@@ -19,15 +20,16 @@ export interface IAuthContext {
 }
 
 export interface IArtworkContext {
-  getTwentyMostRecentArtworks: () => Promise<MixedArtworks[] | void>;
+  getTwentyMostRecentArtworks: () => Promise<SpecificArtwork[] | void>;
   getSingleArtwork: (artworkID: number) => Promise<IArtwork | void>;
-  getAllArtworksByUserID: (userID: number) => Promise<MixedArtworks[] | void>;
+  getAllArtworksByUserID: (userID: number) => Promise<SpecificArtwork[] | void>;
   setCritiqueStatus: (artworkID: number, critiqueStatus: string) => Promise<boolean | void>;
   submitArtwork: (artworkFormData: SubmitArtworkFormPropTypes) => Promise<boolean | void>;
 }
 
 export interface ISessionDetails {
   user: IUser | undefined;
+  isSignedIn: boolean;
   accessJwt: string | undefined;
   accessJwtExpiresOn: string;
   refreshJwt: string | null;

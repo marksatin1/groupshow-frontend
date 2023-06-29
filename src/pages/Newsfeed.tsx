@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { axInst } from "../config/axiosInstance";
+import { useContext, useEffect, useState } from "react";
 import NavBar from "../components/ui/NavBar";
 import Painting from "../components/artwork/Painting";
 import Performance from "../components/artwork/Performance";
@@ -15,23 +14,21 @@ import {
   IVideo,
   IWriting,
 } from "../interfaces/Artwork";
-import { MixedArtworks } from "../interfaces/ArtworkPropTypes";
+import { SpecificArtwork } from "../types/ArtworkPropTypes";
+import ArtworkContext from "../context/ArtworkContext";
 
 const Newsfeed = () => {
-  const [artworks, setArtworks] = useState<MixedArtworks>([]);
-
-  const populateNewsfeed = async () => {
-    try {
-      const { data: artworksData } = await axInst.get("/newsfeed/");
-      setArtworks(artworksData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [artworks, setArtworks] = useState<SpecificArtwork[]>([]);
+  const { getTwentyMostRecentArtworks } = useContext(ArtworkContext);
 
   useEffect(() => {
     populateNewsfeed();
   }, []);
+
+  const populateNewsfeed = async () => {
+    const recentArtworks = await getTwentyMostRecentArtworks();
+    recentArtworks && setArtworks(recentArtworks);
+  };
 
   const artworksToMap = artworks.map(artwork => {
     switch (artwork.artworkType) {

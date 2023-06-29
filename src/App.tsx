@@ -6,21 +6,31 @@ import Portfolio from "./pages/Portfolio";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import SubmitArtwork from "./pages/SubmitArtwork";
-import Artwork from "./pages/Artwork";
 import { useContext } from "react";
-import ArtworkContext from "./context/ArtworkContext";
 import AuthContext from "./context/AuthContext";
+import Artwork from "./pages/Artwork";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
+  const { isSignedIn } = useContext(AuthContext);
+
   return (
     <>
-      {/* <Newsfeed /> */}
-      {/* <Portfolio /> */}
-      {/* <Register /> */}
-      {/* <ResetPassword /> */}
-      <Login />
-      {/* <SubmitArtwork /> */}
-      {/* <Artwork /> */}
+      <Routes>
+        {!isSignedIn && <Route path="/" element={<Login />} />}
+        {isSignedIn && (
+          <>
+            <Route path="/home" element={<Newsfeed />} />
+            <Route path="/me" element={<Portfolio />} />
+            <Route path="/artwork/submit" element={<SubmitArtwork />} />
+            <Route path="/auth/reset-password" element={<ResetPassword />} />
+          </>
+        )}
+
+        {/* <Register /> */}
+        {/* <Artwork /> */}
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
     </>
   );
 };

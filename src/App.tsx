@@ -10,6 +10,7 @@ import Artwork from "./pages/Artwork";
 import { useContext } from "react";
 import ArtworkContext from "./context/ArtworkContext";
 import AuthContext from "./context/AuthContext";
+import SubmitArtworkComponent from "./components/ui/SubmitArtworkComponent";
 
 const App = () => {
   return (
@@ -19,7 +20,9 @@ const App = () => {
       {/* <Register /> */}
       {/* <ResetPassword /> */}
       {/* <Login /> */}
-      <SubmitArtwork />
+      <SubmitArtworkComponent artworkType={""} title={""} artistStatement={""} isOpenForCritique={""} fileUrl={""} isOpen={false} closeModal={function (): void {
+        throw new Error("Function not implemented.");
+      } } />
       {/* <Artwork /> */}
     </>
   );

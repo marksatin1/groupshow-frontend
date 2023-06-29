@@ -11,7 +11,7 @@ import { useContext } from "react";
 import ArtworkContext from "./context/ArtworkContext";
 import AuthContext from "./context/AuthContext";
 
-// const App = () => {
+const App = () => {
 //   const {
 //     getTwentyMostRecentArtworks,
 //     getSingleArtwork,

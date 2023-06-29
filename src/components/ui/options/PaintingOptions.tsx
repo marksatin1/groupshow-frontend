@@ -1,5 +1,5 @@
 import SelectMenu from "../SelectMenu";
-import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
 
 const PaintingOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
   return (

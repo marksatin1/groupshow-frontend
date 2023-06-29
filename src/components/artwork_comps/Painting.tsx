@@ -1,6 +1,5 @@
 import React from "react";
-import { PaintingProps } from "../../typing/ArtworksPropTypes";
-
+import { PaintingProps } from "../../interfaces/ArtworkPropTypes";
 
 const Painting: React.FC<PaintingProps> = ({ painting }) => {
   return (

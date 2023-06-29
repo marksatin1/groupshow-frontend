@@ -1,7 +1,8 @@
 import ArtworkContext from "./ArtworkContext";
-import { axInst, axInstAccess } from "../config/axiosInstance";
-import { IArtwork, UploadArtworkProps } from "../typing/Artworks";
-import { MixedArtworks } from "../typing/ArtworksPropTypes";
+import { axInst } from "../config/axiosInstance";
+import { IArtwork } from "../interfaces/Artwork";
+import { MixedArtworks } from "../types/ArtworkPropTypes";
+import { SubmitArtworkFormPropTypes } from "../types/FormPropTypes";
 
 const ArtworkContextProvider = ({ children }: any) => {
   const getTwentyMostRecentArtworks = async () => {
@@ -42,7 +43,7 @@ const ArtworkContextProvider = ({ children }: any) => {
     }
   };
 
-  const uploadArtwork = async ({ artworkFormData }: UploadArtworkProps) => {
+  const submitArtwork = async ({ artworkFormData }: SubmitArtworkFormPropTypes) => {
     try {
       const { data }: any = await axInst.post(
         `/${artworkFormData.artworkType}/upload`,
@@ -59,7 +60,7 @@ const ArtworkContextProvider = ({ children }: any) => {
     getSingleArtwork,
     getAllArtworkByUserID,
     setCritiqueStatus,
-    uploadArtwork,
+    submitArtwork,
   };
 
   return <ArtworkContext.Provider value={artworkContext}>{children}</ArtworkContext.Provider>;

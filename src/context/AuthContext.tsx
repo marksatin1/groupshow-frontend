@@ -1,17 +1,12 @@
 import { createContext } from "react";
-import {
-  IAuthContext,
-  LoginFormProps,
-  RegisterFormProps,
-  ResetPasswordFormProps,
-} from "../typing/Auth";
+import { IAuthContext } from "../interfaces/Context";
 
 const AuthContext = createContext<IAuthContext>({
   user: undefined,
   accessJwt: undefined,
-  registerNewUser: ({}: RegisterFormProps) => Promise.resolve(),
-  resetPassword: ({}: ResetPasswordFormProps) => Promise.resolve(),
-  login: ({}: LoginFormProps) => Promise.resolve(),
+  registerNewUser: () => Promise.resolve(),
+  resetPassword: () => Promise.resolve(),
+  login: () => Promise.resolve(),
   refreshAccessToken: () => Promise.resolve(),
   logout: () => Promise.resolve(),
 });

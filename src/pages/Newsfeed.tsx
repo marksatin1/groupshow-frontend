@@ -7,8 +7,15 @@ import Photograph from "../components/artwork_comps/Photograph";
 import Song from "../components/artwork_comps/Song";
 import Video from "../components/artwork_comps/Video";
 import Writing from "../components/artwork_comps/Writing";
-import { IPainting, IPerformance, IPhotograph, ISong, IVideo, IWriting } from "../typing/Artworks";
-import { MixedArtworks } from "../typing/ArtworksPropTypes";
+import {
+  IPainting,
+  IPerformance,
+  IPhotograph,
+  ISong,
+  IVideo,
+  IWriting,
+} from "../interfaces/Artwork";
+import { MixedArtworks } from "../interfaces/ArtworkPropTypes";
 
 const Newsfeed = () => {
   const [artworks, setArtworks] = useState<MixedArtworks>([]);

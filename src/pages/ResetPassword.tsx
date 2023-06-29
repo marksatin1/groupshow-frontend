@@ -2,7 +2,7 @@ import { useState, ChangeEvent } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
-import { ResetPasswordFormProps } from "../typing/UIPropTypes";
+import { ResetPasswordFormProps } from "../types/UIPropTypes";
 import NavBar from "../components/ui/NavBar";
 
 const ResetPassword = () => {

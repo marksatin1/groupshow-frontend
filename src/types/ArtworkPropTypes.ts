@@ -6,7 +6,16 @@ import {
   ISong,
   IVideo,
   IWriting,
-} from "./Artworks";
+} from "../interfaces/Artwork";
+
+export type SpecificArtwork =
+  | IArtwork
+  | IPainting
+  | IPerformance
+  | IPhotograph
+  | ISong
+  | IVideo
+  | IWriting;
 
 export type MixedArtworks = Array<
   IArtwork | IPainting | IPerformance | IPhotograph | ISong | IVideo | IWriting

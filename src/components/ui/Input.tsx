@@ -1,4 +1,4 @@
-import { InputProps } from "../../typing/UIPropTypes";
+import { InputProps } from "../../types/UIPropTypes";
 
 const Input: React.FC<InputProps> = ({ type, id, placeholder, value, onChange }) => {
   return (

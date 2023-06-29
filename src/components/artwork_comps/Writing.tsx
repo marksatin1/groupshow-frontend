@@ -1,5 +1,5 @@
 import React from "react";
-import { Writing } from "../../typing/Artworks";
+import { Writing } from "../../interfaces/Artwork";
 
 const Writing: React.FC<Writing> = ({ title, url, isOpenForCritique }) => {
   return (

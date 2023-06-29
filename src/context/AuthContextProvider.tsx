@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { axInst } from "../config/axiosInstance";
+import { IAuthResponseData, ISessionDetails } from "../interfaces/Context";
 import {
-  ISessionDetails,
-  IAuthResponseData,
-  LoginFormProps,
-  RegisterFormProps,
-  ResetPasswordFormProps,
-} from "../typing/Auth";
+  LoginFormPropTypes,
+  RegisterFormPropTypes,
+  ResetPasswordFormPropTypes,
+} from "../types/FormPropTypes";
 import AuthContext from "./AuthContext";
 
 const initSessionDetails = {
@@ -39,7 +38,7 @@ const AuthContextProvider = ({ children }: any) => {
   //   };
   // }, [sessionDetails.accessJwt]);
 
-  const registerNewUser = async ({ registerForm }: RegisterFormProps) => {
+  const registerNewUser = async ({ registerForm }: RegisterFormPropTypes) => {
     try {
       const { data: success } = await axInst.post<boolean | void>("/auth/register", registerForm);
       console.log(success);
@@ -50,7 +49,7 @@ const AuthContextProvider = ({ children }: any) => {
     }
   };
 
-  const resetPassword = async ({ resetPasswordForm }: ResetPasswordFormProps) => {
+  const resetPassword = async ({ resetPasswordForm }: ResetPasswordFormPropTypes) => {
     try {
       const { data: success } = await axInst.post<boolean | void>(
         "/auth/reset-password",
@@ -64,7 +63,7 @@ const AuthContextProvider = ({ children }: any) => {
     }
   };
 
-  const login = async ({ loginForm }: LoginFormProps) => {
+  const login = async ({ loginForm }: LoginFormPropTypes) => {
     try {
       const { data, headers }: { data: IAuthResponseData; headers: Headers } = await axInst.post(
         "/auth/login",

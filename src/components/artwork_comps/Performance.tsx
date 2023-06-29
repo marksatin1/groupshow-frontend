@@ -1,5 +1,5 @@
 import React from "react";
-import { PerformanceProps } from "../../typing/ArtworksPropTypes";
+import { PerformanceProps } from "../../interfaces/ArtworkPropTypes";
 
 const Performance: React.FC<PerformanceProps> = ({ performance }) => {
   return (

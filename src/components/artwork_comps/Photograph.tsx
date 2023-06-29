@@ -1,5 +1,5 @@
 import React from "react";
-import { PhotographProps } from "../../typing/ArtworksPropTypes";
+import { PhotographProps } from "../../interfaces/ArtworkPropTypes";
 
 const Photograph: React.FC<PhotographProps> = ({ photograph }) => {
   return (

@@ -8,9 +8,11 @@ import {
 
 const AuthContext = createContext<IAuthContext>({
   user: undefined,
+  accessJwt: undefined,
   registerNewUser: ({}: RegisterFormProps) => Promise.resolve(),
   resetPassword: ({}: ResetPasswordFormProps) => Promise.resolve(),
   login: ({}: LoginFormProps) => Promise.resolve(),
+  refreshAccessToken: () => Promise.resolve(),
   logout: () => Promise.resolve(),
 });
 

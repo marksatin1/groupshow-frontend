@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useContext } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
-import { ILoginForm } from "../typing/Auth";
+import { ILoginForm } from "../interfaces/Auth";
 import AuthContext from "../context/AuthContext";
 import NavBar from "../components/ui/NavBar";
 

@@ -1,4 +1,4 @@
-import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
 import SelectMenu from "../SelectMenu";
 
 const PerformanceOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {

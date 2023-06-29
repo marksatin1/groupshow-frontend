@@ -1,4 +1,4 @@
-import { FormProps } from "../../typing/UIPropTypes";
+import { FormProps } from "../../types/UIPropTypes";
 
 const Form: React.FC<FormProps> = ({ title, onSubmit, children }) => {
   return (

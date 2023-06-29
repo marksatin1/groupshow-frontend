@@ -1,4 +1,4 @@
-import CommentBox from "../CommentBox";
+import CommentBox from "../ui/CommentBox";
 import CritiqueCategory from "./CritiqueCategory";
 import CritiqueSurvey from "./CritiqueSurvey";
 

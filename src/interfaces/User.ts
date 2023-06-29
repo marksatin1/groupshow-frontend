@@ -1,16 +1,20 @@
-import { IPainting, IPerformance, IPhotograph, ISong, IVideo, IWriting } from "./Artworks";
+import { IPainting, IPerformance, IPhotograph, ISong, IVideo, IWriting } from "./Artwork";
+import { IToken } from "./Token";
 
 export interface IUser {
   userID: number;
   userRole: string;
-  email: string;
-  password: string;
   firstName: string;
   lastName: string;
+  email: string;
+  password: string;
+  gradeLevel?: string;
   major?: string;
   minor?: string;
-  gradeLevel: string;
-  creationDate: string;
+  createdOn: string;
+  registrationToken: string;
+  isAccountActivated: boolean;
+  tokens: IToken[];
   paintings?: IPainting[];
   performances?: IPerformance[];
   photographs?: IPhotograph[];

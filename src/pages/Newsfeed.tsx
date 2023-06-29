@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { axInst } from "../config/axiosInstance";
 import NavBar from "../components/ui/NavBar";
-import Painting from "../components/artwork_comps/Painting";
-import Performance from "../components/artwork_comps/Performance";
-import Photograph from "../components/artwork_comps/Photograph";
-import Song from "../components/artwork_comps/Song";
-import Video from "../components/artwork_comps/Video";
-import Writing from "../components/artwork_comps/Writing";
+import Painting from "../components/artwork/Painting";
+import Performance from "../components/artwork/Performance";
+import Photograph from "../components/artwork/Photograph";
+import Song from "../components/artwork/Song";
+import Video from "../components/artwork/Video";
+import Writing from "../components/artwork/Writing";
 import {
   IPainting,
   IPerformance,

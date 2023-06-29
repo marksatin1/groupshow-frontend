@@ -21,26 +21,26 @@ export type MixedArtworks = Array<
   IArtwork | IPainting | IPerformance | IPhotograph | ISong | IVideo | IWriting
 >;
 
-export type PaintingProps = {
+export type PaintingPropTypes = {
   painting: IPainting;
 };
 
-export type PerformanceProps = {
+export type PerformancePropTypes = {
   performance: IPerformance;
 };
 
-export type PhotographProps = {
+export type PhotographPropTypes = {
   photograph: IPhotograph;
 };
 
-export type SongProps = {
+export type SongPropTypes = {
   song: ISong;
 };
 
-export type VideoProps = {
+export type VideoPropTypes = {
   video: IVideo;
 };
 
-export type WritingProps = {
+export type WritingPropTypes = {
   writing: IWriting;
 };

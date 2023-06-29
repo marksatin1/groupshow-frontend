@@ -1,6 +1,6 @@
 import ContentBox from "../components/ui/ContentBox";
 import NavBar from "../components/ui/NavBar";
-import CritiqueBox from "../components/ui/critique/CritiqueBox";
+import CritiqueBox from "../components/critique/CritiqueBox";
 
 const Artwork = () => {
   return (

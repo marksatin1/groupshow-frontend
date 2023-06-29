@@ -1,11 +1,11 @@
-import React from "react";
-import { PerformanceProps } from "../../typing/ArtworksPropTypes";
+import { FC } from "react";
+import { PerformancePropTypes } from "../../types/ArtworkPropTypes";
 
-const Performance: React.FC<PerformanceProps> = ({ performance }) => {
+const Performance: FC<PerformancePropTypes> = ({ performance }) => {
   return (
     <div>
       <h1>{performance.title}</h1>
-      <video src={performance.url} />
+      <video src={performance.bucketUrl} />
       {performance.isOpenForCritique && (
         <div>
           <h2>Critique</h2>

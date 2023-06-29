@@ -1,4 +1,4 @@
-import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
 import RadioBox from "../RadioBox";
 
 const PhotographOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {

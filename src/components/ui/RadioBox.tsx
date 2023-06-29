@@ -1,4 +1,4 @@
-import { RadioBoxProps } from "../../typing/UIPropTypes";
+import { RadioBoxProps } from "../../types/UIPropTypes";
 import Input from "./Input";
 
 const RadioBox: React.FC<RadioBoxProps> = ({ id, options, onChange }) => {

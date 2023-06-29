@@ -1,4 +1,4 @@
-import { ExtendedArtworkOptionsProps } from "../../../typing/UIPropTypes";
+import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
 import SelectMenu from "../SelectMenu";
 
 const VideoOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {

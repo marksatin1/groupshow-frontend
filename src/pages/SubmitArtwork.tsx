@@ -9,14 +9,15 @@ import PhotographOptions from "../components/ui/options/PhotographOptions";
 import SongOptions from "../components/ui/options/SongOptions";
 import VideoOptions from "../components/ui/options/VideoOptions";
 import WritingOptions from "../components/ui/options/WritingOptions";
-import { ArtworkOptionsProps } from "../typing/UIPropTypes";
+import { ISubmitArtworkForm } from "../interfaces/Forms";
 
 const SubmitArtwork = () => {
-  const [formData, setFormData] = useState<ArtworkOptionsProps>({
-    fileUrl: "",
-    title: "",
-    statement: "",
+  const [formData, setFormData] = useState<ISubmitArtworkForm>({
     artworkType: "",
+    title: "",
+    artistStatement: "",
+    isOpenForCritique: "",
+    fileUrl: "",
   });
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

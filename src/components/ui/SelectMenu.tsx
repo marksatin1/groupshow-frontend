@@ -1,4 +1,4 @@
-import { SelectMenuProps } from "../../typing/UIPropTypes";
+import { SelectMenuProps } from "../../types/UIPropTypes";
 
 const SelectMenu: React.FC<SelectMenuProps> = ({ id, defaultOption, options, onChange }) => {
   const selectOptions = options.map(option => {

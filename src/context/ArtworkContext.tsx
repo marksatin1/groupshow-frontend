@@ -4,7 +4,7 @@ import { IArtworkContext } from "../interfaces/Context";
 const ArtworkContext = createContext<IArtworkContext>({
   getTwentyMostRecentArtworks: () => Promise.resolve(),
   getSingleArtwork: () => Promise.resolve(),
-  getAllArtworkByUserID: () => Promise.resolve(),
+  getAllArtworksByUserID: () => Promise.resolve(),
   setCritiqueStatus: () => Promise.resolve(),
   submitArtwork: () => Promise.resolve(),
 });

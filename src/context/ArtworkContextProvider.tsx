@@ -8,7 +8,7 @@ const ArtworkContextProvider = ({ children }: any) => {
   const getTwentyMostRecentArtworks = async () => {
     try {
       const { data: artworks } = await axInst.get<MixedArtworks[] | void>("/artwork/get-twenty");
-      console.log(artworks);
+      console.log(`Last 20 submitted artworks: ${artworks}`);
     } catch (e) {
       console.error(e);
     }
@@ -17,16 +17,16 @@ const ArtworkContextProvider = ({ children }: any) => {
   const getSingleArtwork = async (artworkID: number) => {
     try {
       const { data: artwork } = await axInst.get<IArtwork | void>(`/artwork/${artworkID}`);
-      console.log(artwork);
+      console.log(`Artwork ID ${artworkID}: ${artwork}`);
     } catch (e) {
       console.error(e);
     }
   };
 
-  const getAllArtworkByUserID = async (userID: number) => {
+  const getAllArtworksByUserID = async (userID: number) => {
     try {
-      const { data: artwork } = await axInst.get<IArtwork[] | void>(`/artwork/all/${userID}`);
-      console.log(artwork);
+      const { data: artworks } = await axInst.get<MixedArtworks[] | void>(`/artwork/all/${userID}`);
+      console.log(`All artworks for User ${userID}: ${artworks}`);
     } catch (e) {
       console.error(e);
     }
@@ -34,10 +34,10 @@ const ArtworkContextProvider = ({ children }: any) => {
 
   const setCritiqueStatus = async (artworkID: number, critiqueStatus: string) => {
     try {
-      const { data } = await axInst.get<boolean | void>(
+      const { data: isOpenForCritique } = await axInst.get<boolean | void>(
         `artwork/set-status/${artworkID}/${critiqueStatus}`
       );
-      console.log(data);
+      console.log(`Artwork ${artworkID} is open for critique: ${isOpenForCritique}`);
     } catch (e) {
       console.error(e);
     }
@@ -45,11 +45,11 @@ const ArtworkContextProvider = ({ children }: any) => {
 
   const submitArtwork = async ({ artworkFormData }: SubmitArtworkFormPropTypes) => {
     try {
-      const { data }: any = await axInst.post(
+      const { data: isSubmittedSuccessfully } = await axInst.post<boolean | void>(
         `/${artworkFormData.artworkType}/upload`,
         artworkFormData
       );
-      console.log(data);
+      console.log(`Artwork form data is submitted successfully: ${isSubmittedSuccessfully}`);
     } catch (e) {
       console.error(e);
     }
@@ -58,7 +58,7 @@ const ArtworkContextProvider = ({ children }: any) => {
   const artworkContext = {
     getTwentyMostRecentArtworks,
     getSingleArtwork,
-    getAllArtworkByUserID,
+    getAllArtworksByUserID,
     setCritiqueStatus,
     submitArtwork,
   };

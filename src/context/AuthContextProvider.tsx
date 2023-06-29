@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { axInst } from "../config/axiosInstance";
-import { IAuthResponseData, ISessionDetails } from "../interfaces/Context";
+import { IAuthResponse, ISessionDetails } from "../interfaces/Context";
 import {
   LoginFormPropTypes,
   RegisterFormPropTypes,
@@ -38,40 +38,33 @@ const AuthContextProvider = ({ children }: any) => {
   //   };
   // }, [sessionDetails.accessJwt]);
 
-  const registerNewUser = async ({ registerForm }: RegisterFormPropTypes) => {
+  const registerNewUser = async ({ registerFormData }: RegisterFormPropTypes) => {
     try {
-      const { data: success } = await axInst.post<boolean | void>("/auth/register", registerForm);
-      console.log(success);
-
-      // if success is true, redirect
+      const { data: isRegistered } = await axInst.post<boolean | void>(
+        "/auth/register",
+        registerFormData
+      );
+      console.log(`User is successfully registered: ${isRegistered}`);
     } catch (e) {
       console.error(e);
     }
   };
 
-  const resetPassword = async ({ resetPasswordForm }: ResetPasswordFormPropTypes) => {
+  const resetPassword = async ({ resetPasswordFormData }: ResetPasswordFormPropTypes) => {
     try {
-      const { data: success } = await axInst.post<boolean | void>(
+      const { data: isPasswordReset } = await axInst.post<boolean | void>(
         "/auth/reset-password",
-        resetPasswordForm
+        resetPasswordFormData
       );
-      console.log(success);
-
-      // if success is true, redirect
+      console.log(`Password is successfully reset: ${isPasswordReset}`);
     } catch (e) {
       console.error(e);
     }
   };
 
-  const login = async ({ loginForm }: LoginFormPropTypes) => {
+  const login = async ({ loginFormData }: LoginFormPropTypes) => {
     try {
-      const { data, headers }: { data: IAuthResponseData; headers: Headers } = await axInst.post(
-        "/auth/login",
-        loginForm
-      );
-
-      console.log(data);
-      console.log(headers);
+      const { data, headers }: IAuthResponse = await axInst.post("/auth/login", loginFormData);
 
       setSessionDetails({
         user: data.user,
@@ -83,6 +76,8 @@ const AuthContextProvider = ({ children }: any) => {
 
       // ! asserts that the authorization header will never be null
       localStorage.setItem("accessJwt", headers.get("authorization")?.slice(7)!);
+
+      console.log(`User ${data.user?.userID} successfully logged in.`);
     } catch (e) {
       console.error(e);
     }
@@ -101,22 +96,29 @@ const AuthContextProvider = ({ children }: any) => {
       });
       setSessionDetails((prev: ISessionDetails) => ({ ...prev, accessJwt: newAccessJwt }));
       localStorage.setItem("accessJwt", newAccessJwt);
+
+      console.log(`New access JWT acquired: ${newAccessJwt}`);
     } catch (e) {
       console.error(e);
     }
   };
 
   const logout = async () => {
-    const { data: success } = await axInst.get<boolean>("/auth/logout", {
-      headers: {
-        Authorization: "Bearer " + sessionDetails.accessJwt,
-      },
-    });
+    try {
+      const { data: isLoggedOut } = await axInst.get<boolean>("/auth/logout", {
+        headers: {
+          Authorization: "Bearer " + sessionDetails.accessJwt,
+        },
+      });
 
-    if (success) {
-      setSessionDetails(initSessionDetails);
-      localStorage.clear();
-      // redirect to homepage
+      if (isLoggedOut === true) {
+        setSessionDetails(initSessionDetails);
+        localStorage.clear();
+        // redirect to homepage
+        console.log("Successfully logged out.");
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

@@ -10,15 +10,15 @@ export type SubmitButtonPropTypes = {
 };
 
 export type RegisterFormPropTypes = {
-  registerForm: IRegisterForm;
+  registerFormData: IRegisterForm;
 };
 
 export type ResetPasswordFormPropTypes = {
-  resetPasswordForm: IResetPasswordForm;
+  resetPasswordFormData: IResetPasswordForm;
 };
 
 export type LoginFormPropTypes = {
-  loginForm: ILoginForm;
+  loginFormData: ILoginForm;
 };
 
 export type SubmitArtworkFormPropTypes = {

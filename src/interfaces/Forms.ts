@@ -40,3 +40,8 @@ export interface ISubmitArtworkForm {
   isFiction?: boolean;
   wordCount?: number;
 }
+
+export interface ISubmitCritiqueForm {
+  rating: number;
+  content: string;
+}

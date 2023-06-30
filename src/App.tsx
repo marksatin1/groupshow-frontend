@@ -10,6 +10,7 @@ import Artwork from "./pages/Artwork";
 import { useContext } from "react";
 import ArtworkContext from "./context/ArtworkContext";
 import AuthContext from "./context/AuthContext";
+import SubmitCritique from "./pages/SubmitCritique";
 
 const App = () => {
   return (
@@ -18,9 +19,10 @@ const App = () => {
       {/* <Portfolio /> */}
       {/* <Register /> */}
       {/* <ResetPassword /> */}
-      <Login />
-      {/* <SubmitArtwork /> */}
+      {/* <Login /> */}
+      <SubmitArtwork />
       {/* <Artwork /> */}
+      {/* <SubmitCritique /> */}
     </>
   );
 };

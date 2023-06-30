@@ -21,25 +21,102 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.form h1 {
-  text-align: center;
-}
-.form form {
-  min-height: 50vh;
-  min-width: 30vw;
+.form {
+  width: 25vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
   font-size: 2rem;
-  border: 5px solid #91e4fb;
-  border-radius: 10px;
   padding: 1rem;
-  box-shadow: 0 0 20px 3px inset #91e4fb;
+  box-shadow: 0 0 10px 3px inset #ff6624;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
 }
-.form form * {
+.form h1 {
+  text-align: center;
+}
+.form * {
   font-size: 1.3rem;
+}
+.form div {
+  margin-bottom: 1.25rem;
+}
+.form label {
+  display: block;
+  margin-bottom: 0.625rem;
+}
+.form hr {
+  border-top: 1px solid #ff6624;
+  width: 85%;
+}
+.form input[type=password],
+.form input[type=file],
+.form select {
+  width: 100%;
+  padding: 0.625rem;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 0.625rem;
+}
+.form input[type=text] {
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 0.625rem;
+}
+.form input[type=number] {
+  width: 33%;
+  height: 3rem;
+  margin-bottom: 0.625rem;
+  justify-self: flex-start;
+}
+.form input[type=submit] {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff6624;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.form input[type=submit]:hover {
+  background-color: #ff6624;
+}
+.form .radio-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.form .radio-group div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form input[type=radio] {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.form textarea {
+  margin-top: 0.625rem;
+  resize: vertical;
+  width: 100%;
+}
+.form .btn {
+  display: block;
+  margin: 0.75rem auto;
+}
+.form .btn:hover {
+  background-color: #ff6624;
+  cursor: pointer;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .hamburger-menu {

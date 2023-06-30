@@ -3,6 +3,7 @@ import {
   ILoginForm,
   IRegisterForm,
   IResetPasswordForm,
+  ISubmitCritiqueForm,
 } from "../interfaces/Forms";
 
 export type SubmitButtonPropTypes = {
@@ -22,5 +23,9 @@ export type LoginFormPropTypes = {
 };
 
 export type SubmitArtworkFormPropTypes = {
-  artworkFormData: ISubmitArtworkForm;
+  submitArtworkFormData: ISubmitArtworkForm;
 };
+
+export type SubmitCritiqueFormPropTypes = {
+  critiqueFormData: ISubmitCritiqueForm;
+}

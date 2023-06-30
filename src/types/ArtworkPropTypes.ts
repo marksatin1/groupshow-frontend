@@ -17,10 +17,6 @@ export type SpecificArtwork =
   | IVideo
   | IWriting;
 
-export type MixedArtworks = Array<
-  IArtwork | IPainting | IPerformance | IPhotograph | ISong | IVideo | IWriting
->;
-
 export type PaintingPropTypes = {
   painting: IPainting;
 };

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { axInst } from "../config/axiosInstance";
 
 import NavBar from "../components/ui/NavBar";
@@ -8,7 +8,7 @@ import Photograph from "../components/artwork/Photograph";
 import Song from "../components/artwork/Song";
 import Video from "../components/artwork/Video";
 import Writing from "../components/artwork/Writing";
-import { MixedArtworks } from "../interfaces/ArtworkPropTypes";
+import { SpecificArtwork } from "../types/ArtworkPropTypes";
 import {
   IPainting,
   IPerformance,
@@ -19,24 +19,24 @@ import {
 } from "../interfaces/Artwork";
 import BusinessCard from "../components/ui/BusinessCard";
 import ContentBox from "../components/ui/ContentBox";
+import ArtworkContext from "../context/ArtworkContext";
+import AuthContext from "../context/AuthContext";
 
 const Portfolio = () => {
-  const [artworks, setArtworks] = useState<MixedArtworks>([]);
-
-  const userID = 1;
-
-  const populatePortfolio = async () => {
-    try {
-      const { data: artworksData } = await axInst.get(`/user/${userID}/submitted-artwork`);
-      setArtworks(artworksData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [artworks, setArtworks] = useState<SpecificArtwork[]>([]);
+  const { getAllArtworksByUserID } = useContext(ArtworkContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     populatePortfolio();
   }, []);
+
+  const populatePortfolio = async () => {
+    if (user !== undefined) {
+      const userArtworks = await getAllArtworksByUserID(user.userID);
+      userArtworks && setArtworks(userArtworks);
+    }
+  };
 
   const artworksToMap = artworks.map(artwork => {
     switch (artwork.artworkType) {

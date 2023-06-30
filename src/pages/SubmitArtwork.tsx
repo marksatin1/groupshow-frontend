@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useContext } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
@@ -10,6 +10,7 @@ import SongOptions from "../components/ui/options/SongOptions";
 import VideoOptions from "../components/ui/options/VideoOptions";
 import WritingOptions from "../components/ui/options/WritingOptions";
 import { ISubmitArtworkForm } from "../interfaces/Forms";
+import ArtworkContext from "../context/ArtworkContext";
 
 const SubmitArtwork = () => {
   const [formData, setFormData] = useState<ISubmitArtworkForm>({
@@ -20,6 +21,8 @@ const SubmitArtwork = () => {
     fileUrl: "",
   });
 
+  const { submitArtwork } = useContext(ArtworkContext);
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
 
@@ -28,14 +31,12 @@ const SubmitArtwork = () => {
 
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
-
-    console.log(formData);
-
-    // submit artwork method via artworkContext
+    submitArtwork({ submitArtworkFormData: formData });
   };
 
   return (
-    <Form title="Submit Your Art!" onSubmit={handleFormSubmission}>
+    <Form className="form" title="Submit Your Art!" onSubmit={handleFormSubmission}>
+      <hr />
       <Input type="file" id="fileUrl" onChange={handleInputChange} />
       <SelectMenu
         id="artworkType"
@@ -52,9 +53,10 @@ const SubmitArtwork = () => {
       {formData.artworkType === "Song" && <SongOptions onChange={handleInputChange} />}
       {formData.artworkType === "Video" && <VideoOptions onChange={handleInputChange} />}
       {formData.artworkType === "Writing" && <WritingOptions onChange={handleInputChange} />}
-      <textarea name="artistStatement" id="artistStatement" onChange={handleInputChange} />
+      <textarea placeholder="Artist's Statement" name="artistStatement" id="artistStatement" onChange={handleInputChange} />
       <SubmitButton name="Submit" />
     </Form>
+    
   );
 };
 

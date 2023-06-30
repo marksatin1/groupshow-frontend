@@ -1,17 +1,20 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useContext } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
-import { ResetPasswordFormProps } from "../types/UIPropTypes";
 import NavBar from "../components/ui/NavBar";
+import { IResetPasswordForm } from "../interfaces/Forms";
+import AuthContext from "../context/AuthContext";
 
 const ResetPassword = () => {
-  const [formData, setFormData] = useState<ResetPasswordFormProps>({
-    password: "",
-    passwordConfirmation: "",
+  const [formData, setFormData] = useState<IResetPasswordForm>({
+    email: "",
+    currentPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
   });
 
-  const userID = 1;
+  const { resetPassword } = useContext(AuthContext);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -24,12 +27,7 @@ const ResetPassword = () => {
 
     console.log(formData);
 
-    // try {
-    //   const { data: passwordData }: any = await axInst.post(`/user/reset-password?userID=${userID}`, formData);
-    //   console.log(passwordData);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    resetPassword({ resetPasswordFormData: formData });
   };
 
   return (

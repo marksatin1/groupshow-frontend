@@ -23,7 +23,7 @@ export type LoginFormPropTypes = {
 };
 
 export type SubmitArtworkFormPropTypes = {
-  artworkFormData: ISubmitArtworkForm;
+  submitArtworkFormData: ISubmitArtworkForm;
 };
 
 export type SubmitCritiqueFormPropTypes = {

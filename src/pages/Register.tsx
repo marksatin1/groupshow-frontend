@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
-import { IRegisterForm } from "../interfaces/Auth";
+import { IRegisterForm } from "../interfaces/Forms";
 import SelectMenu from "../components/ui/SelectMenu";
 import AuthContext from "../context/AuthContext";
 import NavBar from "../components/ui/NavBar";
@@ -22,16 +22,12 @@ const Register = () => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
-
-    console.log(e);
-
-    // registerNewUser(formData);
+    registerNewUser({ registerFormData: formData });
   };
 
   return (

@@ -20,9 +20,9 @@ const App = () => {
       {/* <Register /> */}
       {/* <ResetPassword /> */}
       {/* <Login /> */}
-      {/* <SubmitArtwork /> */}
+      <SubmitArtwork />
       {/* <Artwork /> */}
-      <SubmitCritique />
+      {/* <SubmitCritique /> */}
     </>
   );
 };

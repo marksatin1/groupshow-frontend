@@ -22,15 +22,13 @@ body {
 }
 
 .form {
-  width: 300px;
+  width: 25vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
   font-size: 2rem;
-  border: 1px solid black;
-  border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 0 10px 3px inset #ff6624;
   border-radius: 5px;
@@ -44,76 +42,73 @@ body {
   font-size: 1.3rem;
 }
 .form div {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 .form label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
-.form input[type=text],
+.form hr {
+  border-top: 1px solid #ff6624;
+  width: 85%;
+}
 .form input[type=password],
 .form input[type=file],
-.form textarea,
 .form select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 0.625rem;
   border-radius: 3px;
   box-sizing: border-box;
+  margin-bottom: 0.625rem;
+}
+.form input[type=text] {
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 0.625rem;
+}
+.form input[type=number] {
+  width: 33%;
+  height: 3rem;
+  margin-bottom: 0.625rem;
+  justify-self: flex-start;
 }
 .form input[type=submit] {
   width: 100%;
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #ff6624;
   color: white;
   border: none;
   border-radius: 3px;
   cursor: pointer;
 }
 .form input[type=submit]:hover {
-  background-color: #0056b3;
+  background-color: #ff6624;
 }
-.form .radio-button {
-  display: inline-block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  user-select: none;
+.form .radio-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-.form .radio-button input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+.form .radio-group div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.form .radio-button .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #ccc;
-  border-radius: 50%;
+.form input[type=radio] {
+  margin: 0.5rem 0.5rem 0.5rem 0;
 }
-.form .radio-button input:checked ~ .checkmark {
-  background-color: red;
+.form textarea {
+  margin-top: 0.625rem;
+  resize: vertical;
+  width: 100%;
 }
-.form .radio-button .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-.form .radio-button input:checked ~ .checkmark:after {
+.form .btn {
   display: block;
+  margin: 0.75rem auto;
 }
-.form .radio-button .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
+.form .btn:hover {
+  background-color: #ff6624;
+  cursor: pointer;
 }
 
 .form-container {

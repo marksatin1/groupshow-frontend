@@ -6,7 +6,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
 const NavBar = () => {
-  const { isSignedIn } = useContext(AuthContext);
+  const { isSignedIn, logout } = useContext(AuthContext);
 
   return (
     <div className="nav-bar">
@@ -21,6 +21,7 @@ const NavBar = () => {
       </div>
       {isSignedIn && (
         <div className="nav-bar--right">
+          <button onClick={() => logout}>Logout</button>
           <HamburgerMenu />
         </div>
       )}

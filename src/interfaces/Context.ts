@@ -13,6 +13,7 @@ export interface IAuthContext {
   isSignedIn: boolean;
   accessJwt: string | undefined;
   registerNewUser: ({ registerFormData }: RegisterFormPropTypes) => Promise<boolean | void>;
+  activateAccount: (userID: number, regToken: string) => Promise<boolean | void>;
   resetPassword: ({ resetPasswordFormData }: ResetPasswordFormPropTypes) => Promise<boolean | void>;
   login: ({ loginFormData }: LoginFormPropTypes) => Promise<IAuthContext | void>;
   refreshAccessToken: () => Promise<string | void>;

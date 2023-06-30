@@ -6,6 +6,7 @@ const AuthContext = createContext<IAuthContext>({
   isSignedIn: false,
   accessJwt: undefined,
   registerNewUser: () => Promise.resolve(),
+  activateAccount: () => Promise.resolve(),
   resetPassword: () => Promise.resolve(),
   login: () => Promise.resolve(),
   refreshAccessToken: () => Promise.resolve(),

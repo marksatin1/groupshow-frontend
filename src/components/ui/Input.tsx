@@ -1,6 +1,13 @@
-import { InputProps } from "../../types/UIPropTypes";
+import { InputPropTypes } from "../../types/UIPropTypes";
 
-const Input: React.FC<InputProps> = ({ type, id, placeholder, value, onChange }) => {
+const Input: React.FC<InputPropTypes> = ({
+  type,
+  id,
+  placeholder,
+  autocomplete,
+  value,
+  onChange,
+}) => {
   return (
     <>
       <label htmlFor={id}>{type === "radio" ? value : undefined}</label>
@@ -9,6 +16,7 @@ const Input: React.FC<InputProps> = ({ type, id, placeholder, value, onChange })
         name={id}
         id={id}
         placeholder={placeholder}
+        autoComplete={autocomplete}
         value={value}
         onChange={onChange}
       />

@@ -22,6 +22,24 @@ const AuthContextProvider = ({ children }: any) => {
   const [sessionDetails, setSessionDetails] = useState<ISessionDetails>(initSessionDetails);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user")!);
+    const isSignedIn = localStorage.getItem("isSignedIn") === "true";
+    const accessJwt = localStorage.getItem("accessJwt")!;
+    const accessJwtExpiresOn = localStorage.getItem("accessJwtExpiresOn")!;
+    const refreshJwt = localStorage.getItem("refreshJwt");
+    const refreshJwtExpiresOn = localStorage.getItem("refreshJwtExpiresOn")!;
+
+    setSessionDetails({
+      user,
+      isSignedIn,
+      accessJwt,
+      accessJwtExpiresOn,
+      refreshJwt,
+      refreshJwtExpiresOn,
+    });
+  }, []);
+
   // Handles refreshing access Token
   useEffect(() => {
     if (sessionDetails.isSignedIn) {
@@ -29,7 +47,7 @@ const AuthContextProvider = ({ children }: any) => {
         // Get a new access token 1 minute before orig access token expires
         if (
           sessionDetails.refreshJwtExpiresOn !== undefined &&
-          Date.parse(sessionDetails.refreshJwtExpiresOn) > Date.now() // make sure this compares Epoch ms and not datetime
+          Date.parse(sessionDetails.refreshJwtExpiresOn) > Date.now()
         ) {
           refreshAccessToken();
           console.log("Hit refresh block.");
@@ -66,6 +84,7 @@ const AuthContextProvider = ({ children }: any) => {
         },
       });
       console.log(`User ${userID} has activated their account: ${isActivated}.`);
+      return navigate("/auth/reset-password");
     } catch (e) {
       console.error(e);
     }
@@ -78,6 +97,7 @@ const AuthContextProvider = ({ children }: any) => {
         resetPasswordFormData
       );
       console.log(`Password is successfully reset: ${isPasswordReset}`);
+      return navigate("/home");
     } catch (e) {
       console.error(e);
     }
@@ -87,7 +107,13 @@ const AuthContextProvider = ({ children }: any) => {
     try {
       const { data, headers }: IAuthResponse = await axInst.post("/auth/login", loginFormData);
 
-      console.log(data);
+      // ! asserts that the authorization header will never be null
+      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("isSignedIn", "true");
+      localStorage.setItem("accessJwt", headers.get("authorization")?.slice(7)!);
+      localStorage.setItem("accessJwtExpiresOn", data.accessJwtExpiresOn);
+      localStorage.setItem("refreshJwt", headers.get("x-refresh-token")!);
+      localStorage.setItem("refreshJwtExpiresOn", data.refreshJwtExpiresOn);
 
       setSessionDetails({
         user: data.user,
@@ -98,10 +124,8 @@ const AuthContextProvider = ({ children }: any) => {
         refreshJwtExpiresOn: data.refreshJwtExpiresOn,
       });
 
-      // ! asserts that the authorization header will never be null
-      localStorage.setItem("accessJwt", headers.get("authorization")?.slice(7)!);
       console.log(`User ${data.user?.userID} successfully logged in.`);
-      navigate("/home");
+      return navigate("/home");
     } catch (e) {
       console.error(e);
     }
@@ -135,11 +159,13 @@ const AuthContextProvider = ({ children }: any) => {
         },
       });
 
+      console.log(isLoggedOut);
+
       if (isLoggedOut === true) {
         setSessionDetails(initSessionDetails);
         localStorage.clear();
-        navigate("/");
         console.log("Successfully logged out.");
+        return navigate("/");
       }
     } catch (e) {
       console.error(e);

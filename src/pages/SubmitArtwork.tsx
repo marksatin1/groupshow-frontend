@@ -11,14 +11,18 @@ import VideoOptions from "../components/ui/options/VideoOptions";
 import WritingOptions from "../components/ui/options/WritingOptions";
 import { ISubmitArtworkForm } from "../interfaces/Forms";
 import ArtworkContext from "../context/ArtworkContext";
+import RadioBox from "../components/ui/RadioBox";
+import AuthContext from "../context/AuthContext";
 
 const SubmitArtwork = () => {
+  const { user } = useContext(AuthContext);
   const [formData, setFormData] = useState<ISubmitArtworkForm>({
+    artistID: user?.userID!,
     artworkType: "",
     title: "",
     artistStatement: "",
-    isOpenForCritique: "",
-    fileUrl: "",
+    isOpenForCritique: false,
+    fileUrl: "TEST_URL",
   });
 
   const { submitArtwork } = useContext(ArtworkContext);
@@ -37,14 +41,20 @@ const SubmitArtwork = () => {
   return (
     <Form className="form" title="Submit Your Art!" onSubmit={handleFormSubmission}>
       <hr />
-      <Input type="file" id="fileUrl" onChange={handleInputChange} />
+      {/* <Input type="file" id="fileUrl" autocomplete="fileUrl" onChange={handleInputChange} /> */}
       <SelectMenu
         id="artworkType"
         defaultOption="Artwork Type"
         options={["Painting", "Performance", "Photograph", "Song", "Video", "Writing"]}
         onChange={handleInputChange}
       />
-      <Input type="text" id="title" placeholder="Title" onChange={handleInputChange} />
+      <Input
+        type="text"
+        id="title"
+        placeholder="Title"
+        autocomplete="title"
+        onChange={handleInputChange}
+      />
       {formData.artworkType === "Painting" && <PaintingOptions onChange={handleInputChange} />}
       {formData.artworkType === "Performance" && (
         <PerformanceOptions onChange={handleInputChange} />
@@ -53,10 +63,16 @@ const SubmitArtwork = () => {
       {formData.artworkType === "Song" && <SongOptions onChange={handleInputChange} />}
       {formData.artworkType === "Video" && <VideoOptions onChange={handleInputChange} />}
       {formData.artworkType === "Writing" && <WritingOptions onChange={handleInputChange} />}
-      <textarea placeholder="Artist's Statement" name="artistStatement" id="artistStatement" onChange={handleInputChange} />
+      <textarea
+        placeholder="Artist's Statement"
+        name="artistStatement"
+        id="artistStatement"
+        onChange={handleInputChange}
+      />
+      <p>Open For Critique? Yes / No</p>
+      {/* <RadioBox id="isOpenForCritique" options={["True", "False"]} onChange={handleInputChange} /> */}
       <SubmitButton name="Submit" />
     </Form>
-    
   );
 };
 

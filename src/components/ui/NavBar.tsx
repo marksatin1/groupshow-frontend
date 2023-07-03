@@ -4,6 +4,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import Logo from "./Logo";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const { isSignedIn, logout } = useContext(AuthContext);
@@ -12,7 +13,9 @@ const NavBar = () => {
     <div className="nav-bar">
       {isSignedIn && (
         <div className="nav-bar--left">
-          <ProfilePicture className="pic-size" />
+          <Link to="/profile">
+            <ProfilePicture className="pic-size" />
+          </Link>
           <SearchBar />
         </div>
       )}
@@ -21,7 +24,7 @@ const NavBar = () => {
       </div>
       {isSignedIn && (
         <div className="nav-bar--right">
-          <button onClick={() => logout}>Logout</button>
+          <button onClick={logout}>Logout</button>
           <HamburgerMenu />
         </div>
       )}

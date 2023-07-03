@@ -24,9 +24,6 @@ const ResetPassword = () => {
 
   const handleFormSubmission = async (e: any) => {
     e.preventDefault();
-
-    console.log(formData);
-
     resetPassword({ resetPasswordFormData: formData });
   };
 
@@ -34,11 +31,32 @@ const ResetPassword = () => {
     <>
       <NavBar />
       <Form title="Reset Password" onSubmit={handleFormSubmission}>
-        <Input type="text" id="password" placeholder="Password" onChange={handleInputChange} />
         <Input
           type="text"
-          id="passwordConfirmation"
-          placeholder="Confirm password"
+          id="email"
+          placeholder="Email"
+          autocomplete="email"
+          onChange={handleInputChange}
+        />
+        <Input
+          type="password"
+          id="currentPassword"
+          placeholder="Current Password"
+          autocomplete="currentPassword"
+          onChange={handleInputChange}
+        />
+        <Input
+          type="password"
+          id="newPassword"
+          placeholder="New Password"
+          autocomplete="newPassword"
+          onChange={handleInputChange}
+        />
+        <Input
+          type="password"
+          id="confirmNewPassword"
+          placeholder="Confirm New Password"
+          autocomplete="confirmNewPassword"
           onChange={handleInputChange}
         />
         <SubmitButton name="Reset Password" />

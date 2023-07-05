@@ -14,11 +14,10 @@ import {
   IVideo,
   IWriting,
 } from "../interfaces/Artwork";
-import { SpecificArtwork } from "../types/ArtworkPropTypes";
 import ArtworkContext from "../context/ArtworkContext";
 
 const Newsfeed = () => {
-  const [artworks, setArtworks] = useState<SpecificArtwork[]>([]);
+  const [artworks, setArtworks] = useState<(JSX.Element | undefined)[] | undefined>([]);
   const { getTwentyMostRecentArtworks } = useContext(ArtworkContext);
 
   useEffect(() => {
@@ -27,62 +26,32 @@ const Newsfeed = () => {
 
   const populateNewsfeed = async () => {
     const recentArtworks = await getTwentyMostRecentArtworks();
-    recentArtworks && setArtworks(recentArtworks);
-  };
+    const mappedArtworks = recentArtworks?.map(artwork => {
+      switch (artwork.artworkType) {
+        case "PAINTING":
+          return <Painting key={artwork.artworkID} painting={artwork as IPainting} />;
+        case "PERFORMANCE":
+          return <Performance key={artwork.artworkID} performance={artwork as IPerformance} />;
+        case "PHOTOGRAPH":
+          return <Photograph key={artwork.artworkID} photograph={artwork as IPhotograph} />;
+        case "SONG":
+          return <Song key={artwork.artworkID} song={artwork as ISong} />;
+        case "VIDEO":
+          return <Video key={artwork.artworkID} video={artwork as IVideo} />;
+        case "WRITING":
+          return <Writing key={artwork.artworkID} writing={artwork as IWriting} />;
+        default:
+          break;
+      }
+    });
 
-  const artworksToMap = artworks.map(artwork => {
-    switch (artwork.artworkType) {
-      case "Painting":
-        return <Painting key={artwork.artworkID} painting={artwork as IPainting} />;
-      case "Performance":
-        return <Performance key={artwork.artworkID} performance={artwork as IPerformance} />;
-      case "Photograph":
-        return <Photograph key={artwork.artworkID} photograph={artwork as IPhotograph} />;
-      case "Song":
-        return <Song key={artwork.artworkID} song={artwork as ISong} />;
-      case "Video":
-        return <Video key={artwork.artworkID} video={artwork as IVideo} />;
-      case "Writing":
-        return <Writing key={artwork.artworkID} writing={artwork as IWriting} />;
-      default:
-        break;
-    }
-  });
+    setArtworks(mappedArtworks);
+  };
 
   return (
     <>
       <NavBar />
-      {/* <div>{artworksToMap}</div> */}
-      <div className="artwork-card-container">
-        <div className="artwork-card">
-          <img
-            src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3039&q=80"
-            alt=""
-          />
-          <div className="critique">Critique</div>
-        </div>
-        <div className="artwork-card">
-          <img
-            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
-            alt=""
-          />
-          <div className="critique">Critique</div>
-        </div>
-        <div className="artwork-card">
-          <img
-            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
-            alt=""
-          />
-          <div className="critique">Critique</div>
-        </div>
-        <div className="artwork-card">
-          <img
-            src="https://az334034.vo.msecnd.net/images-0/the-birth-of-the-virgin-corrado-giaquinto-1606-1528ec6d.jpg"
-            alt=""
-          />
-          <div className="critique">Critique</div>
-        </div>
-      </div>
+      <div className="artwork-card-container">{artworks}</div>
     </>
   );
 };

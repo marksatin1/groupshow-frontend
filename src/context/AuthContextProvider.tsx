@@ -97,7 +97,7 @@ const AuthContextProvider = ({ children }: any) => {
         resetPasswordFormData
       );
       console.log(`Password is successfully reset: ${isPasswordReset}`);
-      return navigate("/home");
+      return navigate("/");
     } catch (e) {
       console.error(e);
     }
@@ -161,12 +161,10 @@ const AuthContextProvider = ({ children }: any) => {
 
       console.log(isLoggedOut);
 
-      if (isLoggedOut === true) {
-        setSessionDetails(initSessionDetails);
-        localStorage.clear();
-        console.log("Successfully logged out.");
-        return navigate("/");
-      }
+      setSessionDetails(initSessionDetails);
+      localStorage.clear();
+      console.log("Successfully logged out.");
+      return navigate("/");
     } catch (e) {
       console.error(e);
     }

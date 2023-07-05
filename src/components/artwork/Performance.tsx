@@ -3,7 +3,7 @@ import { PerformancePropTypes } from "../../types/ArtworkPropTypes";
 
 const Performance: FC<PerformancePropTypes> = ({ performance }) => {
   return (
-    <div>
+    <div className="artwork-card">
       <h1>{performance.title}</h1>
       <video src={performance.bucketUrl} />
       {performance.isOpenForCritique && (

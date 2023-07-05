@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from "react";
 import {
   IArtwork,
   IPainting,
@@ -16,6 +17,10 @@ export type SpecificArtwork =
   | ISong
   | IVideo
   | IWriting;
+
+export type ArtworkOptionsPropTypes = {
+  onChange: ChangeEventHandler<HTMLInputElement>;
+};
 
 export type PaintingPropTypes = {
   painting: IPainting;

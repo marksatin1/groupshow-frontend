@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useContext } from "react";
+import { useState, ChangeEvent, useContext, FormEvent } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
@@ -13,16 +13,14 @@ const ResetPassword = () => {
     newPassword: "",
     confirmNewPassword: "",
   });
-
   const { resetPassword } = useContext(AuthContext);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleFormSubmission = async (e: any) => {
+  const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     resetPassword({ resetPasswordFormData: formData });
   };

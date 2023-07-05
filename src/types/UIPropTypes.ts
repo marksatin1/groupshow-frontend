@@ -21,3 +21,7 @@ export type SelectMenuPropTypes = {
   options: string[];
   onChange: ChangeEventHandler;
 };
+
+export type SubmitButtonPropTypes = {
+  name: string;
+};

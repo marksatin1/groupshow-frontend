@@ -1,18 +1,18 @@
-import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
+import { ArtworkOptionsPropTypes } from "../../../types/ArtworkPropTypes";
 import SelectMenu from "../SelectMenu";
 
-const VideoOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
+const VideoOptions: React.FC<ArtworkOptionsPropTypes> = ({ onChange }) => {
   return (
     <>
       <SelectMenu
-        id="videoGenre"
-        defaultOption="Genre"
-        options={["Short", "Feature", "Commercial", "Music Video", "Experimental"]}
+        id="videoType"
+        defaultOption="Type"
+        options={["SHORT", "FEATURE", "COMMERCIAL", "MUSIC VIDEO", "EXPERIMENTAL"]}
         onChange={onChange}
       />
       <input
         type="number"
-        id="durationHour"
+        id="durationHours"
         placeholder="Hours"
         min={0}
         max={4}
@@ -20,7 +20,7 @@ const VideoOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
       />
       <input
         type="number"
-        id="durationMin"
+        id="durationMins"
         placeholder="Minutes"
         min={0}
         max={59}
@@ -28,7 +28,7 @@ const VideoOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
       />
       <input
         type="number"
-        id="durationSec"
+        id="durationSecs"
         placeholder="Seconds"
         min={0}
         max={59}

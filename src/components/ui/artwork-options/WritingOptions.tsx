@@ -1,14 +1,14 @@
-import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
+import { ArtworkOptionsPropTypes } from "../../../types/ArtworkPropTypes";
 import RadioBox from "../RadioBox";
 import SelectMenu from "../SelectMenu";
 
-const WritingOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
+const WritingOptions: React.FC<ArtworkOptionsPropTypes> = ({ onChange }) => {
   return (
     <>
       <SelectMenu
-        id="writingGenre"
-        defaultOption="Genre"
-        options={["Novel", "Short Story", "Poem"]}
+        id="writingType"
+        defaultOption="Type"
+        options={["NOVEL", "SHORT STORY", "POEM"]}
         onChange={onChange}
       />
       <RadioBox id="isFiction" options={["True", "False"]} onChange={onChange} />

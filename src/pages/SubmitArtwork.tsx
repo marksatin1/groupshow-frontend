@@ -1,51 +1,48 @@
-import { useState, ChangeEvent, useContext } from "react";
+import { useState, ChangeEvent, FormEvent, useContext } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
 import SelectMenu from "../components/ui/SelectMenu";
-import PaintingOptions from "../components/ui/options/PaintingOptions";
-import PerformanceOptions from "../components/ui/options/PerformanceOptions";
-import PhotographOptions from "../components/ui/options/PhotographOptions";
-import SongOptions from "../components/ui/options/SongOptions";
-import VideoOptions from "../components/ui/options/VideoOptions";
-import WritingOptions from "../components/ui/options/WritingOptions";
+import PaintingOptions from "../components/ui/artwork-options/PaintingOptions";
+import PerformanceOptions from "../components/ui/artwork-options/PerformanceOptions";
+import PhotographOptions from "../components/ui/artwork-options/PhotographOptions";
+import SongOptions from "../components/ui/artwork-options/SongOptions";
+import VideoOptions from "../components/ui/artwork-options/VideoOptions";
+import WritingOptions from "../components/ui/artwork-options/WritingOptions";
 import { ISubmitArtworkForm } from "../interfaces/Forms";
 import ArtworkContext from "../context/ArtworkContext";
-import RadioBox from "../components/ui/RadioBox";
 import AuthContext from "../context/AuthContext";
 
 const SubmitArtwork = () => {
   const { user } = useContext(AuthContext);
+  const { submitArtwork } = useContext(ArtworkContext);
   const [formData, setFormData] = useState<ISubmitArtworkForm>({
     artistID: user?.userID!,
     artworkType: "",
     title: "",
     artistStatement: "",
     isOpenForCritique: false,
-    fileUrl: "TEST_URL",
+    bucketUrl: "TEST_URL",
   });
-
-  const { submitArtwork } = useContext(ArtworkContext);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
-
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleFormSubmission = async (e: any) => {
+  const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     submitArtwork({ submitArtworkFormData: formData });
   };
 
   return (
-    <Form className="form" title="Submit Your Art!" onSubmit={handleFormSubmission}>
+    <Form title="Submit Your Art!" onSubmit={handleFormSubmission}>
       <hr />
-      {/* <Input type="file" id="fileUrl" autocomplete="fileUrl" onChange={handleInputChange} /> */}
+      {/* <Input type="file" id="bucketUrl" autocomplete="bucketUrl" onChange={handleInputChange} /> */}
       <SelectMenu
         id="artworkType"
         defaultOption="Artwork Type"
-        options={["Painting", "Performance", "Photograph", "Song", "Video", "Writing"]}
+        options={["PAINTING", "PERFORMANCE", "PHOTOGRAPH", "SONG", "VIDEO", "WRITING"]}
         onChange={handleInputChange}
       />
       <Input
@@ -55,14 +52,14 @@ const SubmitArtwork = () => {
         autocomplete="title"
         onChange={handleInputChange}
       />
-      {formData.artworkType === "Painting" && <PaintingOptions onChange={handleInputChange} />}
-      {formData.artworkType === "Performance" && (
+      {formData.artworkType === "PAINTING" && <PaintingOptions onChange={handleInputChange} />}
+      {formData.artworkType === "PERFORMANCE" && (
         <PerformanceOptions onChange={handleInputChange} />
       )}{" "}
-      {formData.artworkType === "Photograph" && <PhotographOptions onChange={handleInputChange} />}
-      {formData.artworkType === "Song" && <SongOptions onChange={handleInputChange} />}
-      {formData.artworkType === "Video" && <VideoOptions onChange={handleInputChange} />}
-      {formData.artworkType === "Writing" && <WritingOptions onChange={handleInputChange} />}
+      {formData.artworkType === "PHOTOGRAPH" && <PhotographOptions onChange={handleInputChange} />}
+      {formData.artworkType === "SONG" && <SongOptions onChange={handleInputChange} />}
+      {formData.artworkType === "VIDEO" && <VideoOptions onChange={handleInputChange} />}
+      {formData.artworkType === "WRITING" && <WritingOptions onChange={handleInputChange} />}
       <textarea
         placeholder="Artist's Statement"
         name="artistStatement"

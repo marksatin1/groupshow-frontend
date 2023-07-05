@@ -26,7 +26,7 @@ export interface ISubmitArtworkForm {
   title: string;
   artistStatement: string;
   isOpenForCritique: boolean;
-  fileUrl: string;
+  bucketUrl: string;
   paintingType?: string;
   performanceType?: string;
   videoType?: string;

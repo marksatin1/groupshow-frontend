@@ -3,7 +3,7 @@ import { PhotographPropTypes } from "../../types/ArtworkPropTypes";
 
 const Photograph: FC<PhotographPropTypes> = ({ photograph }) => {
   return (
-    <div>
+    <div className="artwork-card">
       <h1>{photograph.title}</h1>
       <img src={photograph.bucketUrl} alt={photograph.title} />
       {photograph.isOpenForCritique && (

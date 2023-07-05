@@ -3,7 +3,7 @@ import { VideoPropTypes } from "../../types/ArtworkPropTypes";
 
 const Video: FC<VideoPropTypes> = ({ video }) => {
   return (
-    <div>
+    <div className="artwork-card">
       <h1>{video.title}</h1>
       {video.isOpenForCritique && (
         <div>

@@ -21,6 +21,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
 .form {
   width: 25vw;
   display: flex;
@@ -109,14 +117,6 @@ body {
 .form .btn:hover {
   background-color: #ff6624;
   cursor: pointer;
-}
-
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  box-sizing: border-box;
 }
 
 .hamburger-menu {

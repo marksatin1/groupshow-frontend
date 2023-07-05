@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ProfilePicture from "./ProfilePicture";
 
 const BusinessCard = () => {
@@ -12,7 +13,9 @@ const BusinessCard = () => {
           <h3>Graduating 2025</h3>
         </div>
         <div>
-          <button type="submit">Submit New Artwork</button>
+          <Link to="/artwork/submit">
+            <button type="button">Submit New Artwork</button>
+          </Link>
         </div>
       </div>
     </div>

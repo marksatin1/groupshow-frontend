@@ -21,11 +21,12 @@ export interface ILoginForm {
 }
 
 export interface ISubmitArtworkForm {
+  artistID: number;
   artworkType: string;
   title: string;
   artistStatement: string;
-  isOpenForCritique: string;
-  fileUrl: string;
+  isOpenForCritique: boolean;
+  bucketUrl: string;
   paintingType?: string;
   performanceType?: string;
   videoType?: string;

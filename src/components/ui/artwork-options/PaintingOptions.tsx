@@ -1,13 +1,13 @@
+import { ArtworkOptionsPropTypes } from "../../../types/ArtworkPropTypes";
 import SelectMenu from "../SelectMenu";
-import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
 
-const PaintingOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
+const PaintingOptions: React.FC<ArtworkOptionsPropTypes> = ({ onChange }) => {
   return (
     <>
       <SelectMenu
-        id="paintingGenre"
-        defaultOption="Genre"
-        options={["Oil", "Watercolor", "Acrylic"]}
+        id="paintingType"
+        defaultOption="Type"
+        options={["OIL", "WATERCOLOR", "ACRYLIC"]}
         onChange={onChange}
       />
       <input type="number" id="width" placeholder="Width" min={0} step={0.25} onChange={onChange} />

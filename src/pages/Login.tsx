@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useContext, FormEventHandler } from "react";
+import { useState, ChangeEvent, useContext, FormEvent } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
@@ -18,7 +18,7 @@ const Login = () => {
     setFormData((prev: ILoginForm) => ({ ...prev, [id]: value }));
   };
 
-  const handleFormSubmission = async (e: SubmitEvent) => {
+  const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await login({ loginFormData: formData });
   };

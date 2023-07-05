@@ -1,11 +1,11 @@
-import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
+import { ArtworkOptionsPropTypes } from "../../../types/ArtworkPropTypes";
 
-const SongOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
+const SongOptions: React.FC<ArtworkOptionsPropTypes> = ({ onChange }) => {
   return (
     <>
       <input
         type="number"
-        id="durationMin"
+        id="durationMins"
         placeholder="Minutes"
         min={0}
         max={59}
@@ -13,7 +13,7 @@ const SongOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
       />
       <input
         type="number"
-        id="durationSec"
+        id="durationSecs"
         placeholder="Seconds"
         min={0}
         max={59}

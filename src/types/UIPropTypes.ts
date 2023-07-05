@@ -4,6 +4,7 @@ export type InputPropTypes = {
   type: string;
   id: string;
   placeholder?: string;
+  autocomplete?: string;
   value?: string;
   onChange: ChangeEventHandler;
 };
@@ -19,4 +20,8 @@ export type SelectMenuPropTypes = {
   defaultOption: string;
   options: string[];
   onChange: ChangeEventHandler;
+};
+
+export type SubmitButtonPropTypes = {
+  name: string;
 };

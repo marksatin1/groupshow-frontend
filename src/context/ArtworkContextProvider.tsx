@@ -46,9 +46,10 @@ const ArtworkContextProvider = ({ children }: any) => {
   };
 
   const submitArtwork = async ({ submitArtworkFormData }: SubmitArtworkFormPropTypes) => {
+    console.log(submitArtworkFormData);
     try {
       const { data: isSubmittedSuccessfully } = await axInst.post<boolean | void>(
-        `/${submitArtworkFormData.artworkType}/upload`,
+        `/${submitArtworkFormData.artworkType.toLowerCase()}/upload`,
         submitArtworkFormData
       );
       console.log(`Artwork form data is submitted successfully: ${isSubmittedSuccessfully}`);

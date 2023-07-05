@@ -26,7 +26,7 @@ const App = () => {
       {isSignedIn && user?.userRole !== "ADMIN" && (
         <>
           <Route path="/home" element={<Newsfeed />} />
-          <Route path="/me" element={<Portfolio />} />
+          <Route path="/profile" element={<Portfolio />} />
           <Route path="/artwork/submit" element={<SubmitArtwork />} />
         </>
       )}

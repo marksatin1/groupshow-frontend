@@ -3,7 +3,7 @@ import { PaintingPropTypes } from "../../types/ArtworkPropTypes";
 
 const Painting: FC<PaintingPropTypes> = ({ painting }) => {
   return (
-    <div>
+    <div className="artwork-card">
       <h1>{painting.title}</h1>
       <img src={painting.bucketUrl} alt={painting.title} />
       {painting.isOpenForCritique && (

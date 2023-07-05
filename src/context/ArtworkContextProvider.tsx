@@ -9,6 +9,7 @@ const ArtworkContextProvider = ({ children }: any) => {
     try {
       const { data: artworks } = await axInst.get<SpecificArtwork[] | void>("/artwork/get-twenty");
       console.log(`Last 20 submitted artworks: ${artworks}`);
+      return artworks;
     } catch (e) {
       console.error(e);
     }
@@ -18,6 +19,7 @@ const ArtworkContextProvider = ({ children }: any) => {
     try {
       const { data: artwork } = await axInst.get<IArtwork | void>(`/artwork/${artworkID}`);
       console.log(`Artwork ID ${artworkID}: ${artwork}`);
+      return artwork;
     } catch (e) {
       console.error(e);
     }
@@ -29,6 +31,7 @@ const ArtworkContextProvider = ({ children }: any) => {
         `/artwork/all/${userID}`
       );
       console.log(`All artworks for User ${userID}: ${artworks}`);
+      return artworks;
     } catch (e) {
       console.error(e);
     }

@@ -1,17 +1,12 @@
-import React from "react";
+import { FC } from "react";
+import { ArtworkCardPropTypes } from "../../types/UIPropTypes";
 
-const ArtworkCard = ({ title, url, isOpenForCritique }) => {
+const ArtworkCard: FC<ArtworkCardPropTypes> = ({ title, bucketUrl, isOpenForCritique }) => {
   return (
     <div className="artwork-card">
       <h1>{title}</h1>
-      <div>
-        <p>{url}</p>
-      </div>
-      {isOpenForCritique && (
-        <div>
-          <h2>Critique</h2>
-        </div>
-      )}
+      <img src={bucketUrl} alt="" />
+      {isOpenForCritique && <div className="critique">Critique</div>}
     </div>
   );
 };

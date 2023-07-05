@@ -3,7 +3,7 @@ import { SongPropTypes } from "../../types/ArtworkPropTypes";
 
 const Song: FC<SongPropTypes> = ({ song }) => {
   return (
-    <div>
+    <div className="artwork-card">
       <h1>{song.title}</h1>
       <audio src={song.bucketUrl} />
       {song.isOpenForCritique && (

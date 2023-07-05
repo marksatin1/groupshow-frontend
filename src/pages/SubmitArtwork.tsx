@@ -39,6 +39,13 @@ const SubmitArtwork = () => {
     <Form title="Submit Your Art!" onSubmit={handleFormSubmission}>
       <hr />
       {/* <Input type="file" id="bucketUrl" autocomplete="bucketUrl" onChange={handleInputChange} /> */}
+      <Input
+        type="text"
+        id="bucketUrl"
+        placeholder="URL"
+        autocomplete="bucketUrl"
+        onChange={handleInputChange}
+      />
       <SelectMenu
         id="artworkType"
         defaultOption="Artwork Type"

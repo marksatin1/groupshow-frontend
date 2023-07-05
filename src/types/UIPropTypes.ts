@@ -25,3 +25,9 @@ export type SelectMenuPropTypes = {
 export type SubmitButtonPropTypes = {
   name: string;
 };
+
+export type ArtworkCardPropTypes = {
+  title: string;
+  bucketUrl: string;
+  isOpenForCritique: boolean;
+};

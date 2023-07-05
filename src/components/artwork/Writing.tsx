@@ -3,7 +3,7 @@ import { WritingPropTypes } from "../../types/ArtworkPropTypes";
 
 const Writing: FC<WritingPropTypes> = ({ writing }) => {
   return (
-    <div>
+    <div className="artwork-card">
       <h1>{writing.title}</h1>
       <div>
         <p>{writing.bucketUrl}</p>

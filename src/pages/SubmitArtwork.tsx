@@ -12,6 +12,7 @@ import WritingOptions from "../components/ui/artwork-options/WritingOptions";
 import { ISubmitArtworkForm } from "../interfaces/Forms";
 import ArtworkContext from "../context/ArtworkContext";
 import AuthContext from "../context/AuthContext";
+import NavBar from "../components/ui/NavBar";
 
 const SubmitArtwork = () => {
   const { user } = useContext(AuthContext);
@@ -36,40 +37,43 @@ const SubmitArtwork = () => {
   };
 
   return (
-    <Form title="Submit Your Art!" onSubmit={handleFormSubmission}>
-      <hr />
-      {/* <Input type="file" id="bucketUrl" autocomplete="bucketUrl" onChange={handleInputChange} /> */}
-      <SelectMenu
-        id="artworkType"
-        defaultOption="Artwork Type"
-        options={["PAINTING", "PERFORMANCE", "PHOTOGRAPH", "SONG", "VIDEO", "WRITING"]}
-        onChange={handleInputChange}
-      />
-      <Input
-        type="text"
-        id="title"
-        placeholder="Title"
-        autocomplete="title"
-        onChange={handleInputChange}
-      />
-      {formData.artworkType === "PAINTING" && <PaintingOptions onChange={handleInputChange} />}
-      {formData.artworkType === "PERFORMANCE" && (
-        <PerformanceOptions onChange={handleInputChange} />
-      )}{" "}
-      {formData.artworkType === "PHOTOGRAPH" && <PhotographOptions onChange={handleInputChange} />}
-      {formData.artworkType === "SONG" && <SongOptions onChange={handleInputChange} />}
-      {formData.artworkType === "VIDEO" && <VideoOptions onChange={handleInputChange} />}
-      {formData.artworkType === "WRITING" && <WritingOptions onChange={handleInputChange} />}
-      <textarea
-        placeholder="Artist's Statement"
-        name="artistStatement"
-        id="artistStatement"
-        onChange={handleInputChange}
-      />
-      <p>Open For Critique? Yes / No</p>
-      {/* <RadioBox id="isOpenForCritique" options={["True", "False"]} onChange={handleInputChange} /> */}
-      <SubmitButton name="Submit" />
-    </Form>
+    <>
+      <NavBar />
+      <Form title="Submit Your Art!" onSubmit={handleFormSubmission}>
+        <hr />
+        {/* <Input type="file" id="bucketUrl" autocomplete="bucketUrl" onChange={handleInputChange} /> */}
+        <SelectMenu
+          id="artworkType"
+          defaultOption="Artwork Type"
+          options={["PAINTING", "PERFORMANCE", "PHOTOGRAPH", "SONG", "VIDEO", "WRITING"]}
+          onChange={handleInputChange}
+        />
+        <Input
+          type="text"
+          id="title"
+          placeholder="Title"
+          autocomplete="title"
+          onChange={handleInputChange}
+        />
+        {formData.artworkType === "PAINTING" && <PaintingOptions onChange={handleInputChange} />}
+        {formData.artworkType === "PERFORMANCE" && (
+          <PerformanceOptions onChange={handleInputChange} />
+        )}{" "}
+        {formData.artworkType === "PHOTOGRAPH" && <PhotographOptions onChange={handleInputChange} />}
+        {formData.artworkType === "SONG" && <SongOptions onChange={handleInputChange} />}
+        {formData.artworkType === "VIDEO" && <VideoOptions onChange={handleInputChange} />}
+        {formData.artworkType === "WRITING" && <WritingOptions onChange={handleInputChange} />}
+        <textarea
+          placeholder="Artist's Statement"
+          name="artistStatement"
+          id="artistStatement"
+          onChange={handleInputChange}
+        />
+        <p>Open For Critique? Yes / No</p>
+        {/* <RadioBox id="isOpenForCritique" options={["True", "False"]} onChange={handleInputChange} /> */}
+        <SubmitButton name="Submit" />
+      </Form>
+    </>
   );
 };
 

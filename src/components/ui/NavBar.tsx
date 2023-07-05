@@ -24,7 +24,7 @@ const NavBar = () => {
       </div>
       {isSignedIn && (
         <div className="nav-bar--right">
-          <button onClick={logout}>Logout</button>
+          {/* <button onClick={logout}>Logout</button> */}
           <HamburgerMenu />
         </div>
       )}

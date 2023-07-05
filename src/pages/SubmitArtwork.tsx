@@ -12,6 +12,7 @@ import WritingOptions from "../components/ui/artwork-options/WritingOptions";
 import { ISubmitArtworkForm } from "../interfaces/Forms";
 import ArtworkContext from "../context/ArtworkContext";
 import AuthContext from "../context/AuthContext";
+import NavBar from "../components/ui/NavBar";
 
 const SubmitArtwork = () => {
   const { user } = useContext(AuthContext);

@@ -1,3 +1,4 @@
+import { FormEventHandler } from "react";
 import {
   ISubmitArtworkForm,
   ILoginForm,
@@ -6,8 +7,10 @@ import {
   ISubmitCritiqueForm,
 } from "../interfaces/Forms";
 
-export type SubmitButtonPropTypes = {
-  name: string;
+export type FormPropTypes = {
+  title: string;
+  onSubmit: FormEventHandler<HTMLFormElement>;
+  children: any;
 };
 
 export type RegisterFormPropTypes = {
@@ -28,4 +31,4 @@ export type SubmitArtworkFormPropTypes = {
 
 export type SubmitCritiqueFormPropTypes = {
   critiqueFormData: ISubmitCritiqueForm;
-}
+};

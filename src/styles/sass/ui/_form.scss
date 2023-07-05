@@ -1,3 +1,11 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; // viewport height
+  box-sizing: border-box;
+}
+
 .form {
   h1 {
     text-align: center;
@@ -21,21 +29,21 @@
   border-radius: 5px;
   padding: 20px;
   box-sizing: border-box;
-  
+
   div {
     margin-bottom: 1.25rem;
   }
-  
+
   label {
     display: block;
     margin-bottom: 0.625rem;
   }
-  
+
   hr {
     border-top: 1px solid $primary-theme;
     width: 85%;
   }
-  
+
   input[type="password"],
   input[type="file"],
   select {
@@ -51,7 +59,7 @@
     height: 3rem;
     margin-bottom: 0.625rem;
   }
-  
+
   input[type="number"] {
     width: 33%;
     height: 3rem;
@@ -67,7 +75,7 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    
+
     &:hover {
       background-color: $primary-theme;
     }
@@ -86,7 +94,6 @@
 
   input[type="radio"] {
     margin: 0.5rem 0.5rem 0.5rem 0;
-    
   }
 
   textarea {
@@ -98,14 +105,10 @@
   .btn {
     display: block;
     margin: 0.75rem auto;
-  
+
     &:hover {
       background-color: $primary-theme;
       cursor: pointer;
     }
   }
-
-  
-
-  
 }

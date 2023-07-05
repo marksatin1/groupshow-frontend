@@ -1,18 +1,18 @@
-import { ExtendedArtworkOptionsProps } from "../../../types/UIPropTypes";
+import { ArtworkOptionsPropTypes } from "../../../types/ArtworkPropTypes";
 import SelectMenu from "../SelectMenu";
 
-const PerformanceOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange }) => {
+const PerformanceOptions: React.FC<ArtworkOptionsPropTypes> = ({ onChange }) => {
   return (
     <>
       <SelectMenu
-        id="performanceGenre"
-        defaultOption="Genre"
-        options={["Ballet", "Classical", "Modern"]}
+        id="performanceType"
+        defaultOption="Type"
+        options={["BALLET", "CLASSICAL", "MODERN"]}
         onChange={onChange}
       />
       <input
         type="number"
-        id="durationHour"
+        id="durationHours"
         placeholder="Hours"
         min={0}
         max={4}
@@ -20,7 +20,7 @@ const PerformanceOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange })
       />
       <input
         type="number"
-        id="durationMin"
+        id="durationMins"
         placeholder="Minutes"
         min={0}
         max={59}
@@ -28,7 +28,7 @@ const PerformanceOptions: React.FC<ExtendedArtworkOptionsProps> = ({ onChange })
       />
       <input
         type="number"
-        id="durationSec"
+        id="durationSecs"
         placeholder="Seconds"
         min={0}
         max={59}

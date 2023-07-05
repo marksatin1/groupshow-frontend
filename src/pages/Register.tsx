@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import Input from "../components/ui/Input";
 import SubmitButton from "../components/ui/SubmitButton";
 import Form from "../components/ui/Form";
@@ -25,7 +25,7 @@ const Register = () => {
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleFormSubmission = async (e: any) => {
+  const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     registerNewUser({ registerFormData: formData });
   };

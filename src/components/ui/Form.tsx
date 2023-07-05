@@ -1,6 +1,6 @@
-import { FormProps } from "../../types/UIPropTypes";
+import { FormPropTypes } from "../../types/FormPropTypes";
 
-const Form: React.FC<FormProps> = ({ title, onSubmit, children }) => {
+const Form: React.FC<FormPropTypes> = ({ title, onSubmit, children }) => {
   return (
     <div className="form-container">
       <div className="form">

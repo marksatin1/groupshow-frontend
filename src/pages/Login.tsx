@@ -25,7 +25,6 @@ const Login = () => {
 
   return (
     <>
-      <NavBar />
       <Form title="Login" onSubmit={handleFormSubmission}>
         <Input
           type="text"

@@ -32,7 +32,6 @@ const Register = () => {
 
   return (
     <>
-      <NavBar />
       <Form title="Register A New User" onSubmit={handleFormSubmission}>
         <SelectMenu
           id="userRole"

@@ -29,7 +29,10 @@ const Newsfeed = () => {
     const mappedArtworks = recentArtworks?.map(artwork => {
       switch (artwork.artworkType) {
         case "PAINTING":
-          return <Painting key={artwork.artworkID} painting={artwork as IPainting} />;
+          return (<>
+              <Painting key={artwork.artworkID} painting={artwork as IPainting} />
+              <hr />
+             </>);
         case "PERFORMANCE":
           return <Performance key={artwork.artworkID} performance={artwork as IPerformance} />;
         case "PHOTOGRAPH":
@@ -50,7 +53,6 @@ const Newsfeed = () => {
 
   return (
     <>
-      <NavBar />
       <div className="artwork-card-container">{artworks}</div>
     </>
   );

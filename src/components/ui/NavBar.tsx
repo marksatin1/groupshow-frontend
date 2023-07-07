@@ -9,25 +9,29 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   const { isSignedIn, logout } = useContext(AuthContext);
 
+
   return (
     <div className="nav-bar">
-      {isSignedIn && (
-        <div className="nav-bar--left">
-          <Link to="/profile">
-            <ProfilePicture className="pic-size" />
-          </Link>
-          <SearchBar />
+      <div className="nav-bar--left">
+        {isSignedIn && (
+            <>
+              <Link to="/profile">
+                <ProfilePicture className="pic-size" />
+              </Link>
+              <SearchBar />
+            </>
+            )}
         </div>
-      )}
       <div className="nav-bar--center">
-        <Logo />
+        <Link className="logo-link" to="/home">
+          <Logo />
+        </Link>
       </div>
-      {isSignedIn && (
-        <div className="nav-bar--right">
-          {/* <button onClick={logout}>Logout</button> */}
-          <HamburgerMenu />
-        </div>
-      )}
+      <div className="nav-bar--right">
+        {isSignedIn && (
+            <HamburgerMenu />
+            )}
+      </div>
     </div>
   );
 };

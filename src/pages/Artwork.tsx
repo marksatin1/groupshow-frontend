@@ -29,20 +29,16 @@ const Artwork = () => {
     setCritiques(retrievedCritiques!);
   };
 
-  // useEffect(() => {
-  //   critiques?.forEach(critique => console.log(critique.content));
-  // }, [critiques]);
 
   return (
     <div className="artwork-container">
-      <NavBar />
       <h1>{artwork?.title}</h1>
       <img src={artwork?.bucketUrl} alt={artwork?.title} />
-      <ContentBox title="Statement" content={artwork?.artistStatement} />
+      <ContentBox title="Artist Statement" content={artwork?.artistStatement} />
       {critiques?.map(critique => (
         <CritiqueBox key={critique.critiqueID} critique={critique} />
       ))}
-      <ContentBox
+      {/* <ContentBox
         title="Meta"
         content="doloremque architecto sit perspiciatis nisi, tempore commodi beatae
         quae minima pariatur odit? Voluptatibus at cum doloribus? Lorem ipsum dolor, sit amet
@@ -57,7 +53,7 @@ const Artwork = () => {
         consectetur adipisicing elit. In recusandae magnam, et doloribus repellat, doloremque
         architecto sit perspiciatis nisi, tempore commodi beatae quae minima pariatur odit?
         Voluptatibus at cum doloribus?"
-      />
+      /> */}
     </div>
   );
 };

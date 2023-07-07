@@ -12,31 +12,36 @@ import ActivateAccount from "./pages/ActivateAccount";
 import Register from "./pages/Register";
 import SubmitCritique from "./pages/SubmitCritique";
 import Artwork from "./pages/Artwork";
+import NavBar from "./components/ui/NavBar";
 
 const App = () => {
   const { user, isSignedIn } = useContext(AuthContext);
 
   return (
-    <Routes>
-      {!isSignedIn && <Route path="/" element={<Login />} />}
-      {!user?.isAccountActivated && (
-        <Route path="/auth/activate-account/:userID/:regToken" element={<ActivateAccount />} />
-      )}
-      {isSignedIn && user?.userRole === "ADMIN" && (
-        <Route path="/auth/register" element={<Register />} />
-      )}
-      {isSignedIn && user?.userRole !== "ADMIN" && (
-        <>
-          <Route path="/home" element={<Newsfeed />} />
-          <Route path="/profile" element={<Portfolio />} />
-          <Route path="/artwork/submit" element={<SubmitArtwork />} />
-          <Route path="/artwork/:artworkID/submit-critique" element={<SubmitCritique />} />
-          <Route path="/artwork/:artworkID" element={<Artwork />} />
-        </>
-      )}
-      <Route path="/auth/reset-password" element={<ResetPassword />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+    <>
+      <NavBar />
+      <Routes>
+        
+        {!isSignedIn && <Route path="/" element={<Login />} />}
+        {!user?.isAccountActivated && (
+          <Route path="/auth/activate-account/:userID/:regToken" element={<ActivateAccount />} />
+        )}
+        {isSignedIn && user?.userRole === "ADMIN" && (
+          <Route path="/auth/register" element={<Register />} />
+        )}
+        {isSignedIn && user?.userRole !== "ADMIN" && (
+          <>
+            <Route path="/home" element={<Newsfeed />} />
+            <Route path="/profile" element={<Portfolio />} />
+            <Route path="/artwork/submit" element={<SubmitArtwork />} />
+            <Route path="/artwork/:artworkID/submit-critique" element={<SubmitCritique />} />
+            <Route path="/artwork/:artworkID" element={<Artwork />} />
+          </>
+        )}
+        <Route path="/auth/reset-password" element={<ResetPassword />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </>
   );
 };
 

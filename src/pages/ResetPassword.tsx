@@ -27,7 +27,6 @@ const ResetPassword = () => {
 
   return (
     <>
-      <NavBar />
       <Form title="Reset Password" onSubmit={handleFormSubmission}>
         <Input
           type="text"

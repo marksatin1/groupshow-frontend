@@ -8,9 +8,9 @@ const CritiqueBox: React.FC<CritiquePropTypes> = ({ critique }) => {
     <>
       <div className="critique-box">
         <CritiqueCategory critique={critique} />
-        <CritiqueSurvey />
+        {/* <CritiqueSurvey /> */}
       </div>
-      <CommentBox />
+      {/* <CommentBox /> */}
     </>
   );
 };

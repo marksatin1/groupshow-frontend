@@ -38,7 +38,6 @@ const SubmitArtwork = () => {
 
   return (
     <>
-      <NavBar />
       <Form title="Submit Your Art!" onSubmit={handleFormSubmission}>
         <hr />
         {/* <Input type="file" id="bucketUrl" autocomplete="bucketUrl" onChange={handleInputChange} /> */}

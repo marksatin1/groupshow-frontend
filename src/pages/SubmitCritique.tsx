@@ -5,6 +5,7 @@ import { ISubmitCritiqueForm } from "../interfaces/Forms";
 import ArtworkContext from "../context/ArtworkContext";
 import AuthContext from "../context/AuthContext";
 import { useParams } from "react-router-dom";
+import NavBar from "../components/ui/NavBar";
 
 const SubmitCritique = () => {
   const { user } = useContext(AuthContext);
@@ -28,13 +29,15 @@ const SubmitCritique = () => {
   };
 
   return (
-    <Form title="Submit a Critique" onSubmit={handleFormSubmission}>
-      <hr />
-      <label htmlFor="rating">Rating</label>
-      <input type="number" id="rating" min="1" max="10" onChange={handleInputChange}></input>
-      <textarea placeholder="Critique" name="critique" id="content" onChange={handleInputChange} />
-      <SubmitButton name="Submit" />
-    </Form>
+    <>
+      <Form title="Submit a Critique" onSubmit={handleFormSubmission}>
+        <hr />
+        <label htmlFor="rating">Rating</label>
+        <input type="number" id="rating" min="1" max="10" onChange={handleInputChange}></input>
+        <textarea placeholder="Critique" name="critique" id="content" onChange={handleInputChange} />
+        <SubmitButton name="Submit" />
+      </Form>
+    </>
   );
 };
 

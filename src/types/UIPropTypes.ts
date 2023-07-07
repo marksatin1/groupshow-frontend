@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler} from "react";
 
 export type InputPropTypes = {
   type: string;
@@ -31,3 +31,4 @@ export type ArtworkCardPropTypes = {
   bucketUrl: string;
   isOpenForCritique: boolean;
 };
+

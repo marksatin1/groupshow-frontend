@@ -7,16 +7,16 @@ const Painting: FC<PaintingPropTypes> = ({ painting }) => {
 
   return (
     <div className="artwork-card">
-      <h1>{painting.title}</h1>
+      <h3>{painting.title}</h3>
       <img
         src={painting.bucketUrl}
         alt={painting.title}
         onClick={() => navigate(`/artwork/${painting.artworkID}`)}
       />
       {painting.isOpenForCritique && (
-        <div>
-          <Link to={`/artwork/${painting.artworkID}/submit-critique`}>Critique</Link>
-        </div>
+        
+          <Link className="critique" to={`/artwork/${painting.artworkID}/submit-critique`}>Critique</Link>
+        
       )}
     </div>
   );

@@ -10,6 +10,8 @@ import AuthContext from "./context/AuthContext";
 import PageNotFound from "./pages/PageNotFound";
 import ActivateAccount from "./pages/ActivateAccount";
 import Register from "./pages/Register";
+import SubmitCritique from "./pages/SubmitCritique";
+import Artwork from "./pages/Artwork";
 
 const App = () => {
   const { user, isSignedIn } = useContext(AuthContext);
@@ -28,6 +30,8 @@ const App = () => {
           <Route path="/home" element={<Newsfeed />} />
           <Route path="/profile" element={<Portfolio />} />
           <Route path="/artwork/submit" element={<SubmitArtwork />} />
+          <Route path="/artwork/:artworkID/submit-critique" element={<SubmitCritique />} />
+          <Route path="/artwork/:artworkID" element={<Artwork />} />
         </>
       )}
       <Route path="/auth/reset-password" element={<ResetPassword />} />

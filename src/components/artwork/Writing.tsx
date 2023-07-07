@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { WritingPropTypes } from "../../types/ArtworkPropTypes";
+import { Link } from "react-router-dom";
 
 const Writing: FC<WritingPropTypes> = ({ writing }) => {
   return (
@@ -10,7 +11,7 @@ const Writing: FC<WritingPropTypes> = ({ writing }) => {
       </div>
       {writing.isOpenForCritique && (
         <div>
-          <h2>Critique</h2>
+          <Link to={`/artwork/${writing.artworkID}/submit-critique`}>Critique</Link>
         </div>
       )}
     </div>

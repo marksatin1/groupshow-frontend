@@ -5,6 +5,7 @@ import {
   RegisterFormPropTypes,
   ResetPasswordFormPropTypes,
   SubmitArtworkFormPropTypes,
+  SubmitCritiqueFormPropTypes,
 } from "../types/FormPropTypes";
 import { IUser } from "./User";
 
@@ -25,12 +26,15 @@ export interface IArtworkContext {
   getSingleArtwork: (artworkID: number) => Promise<IArtwork | void>;
   getAllArtworksByUserID: (userID: number) => Promise<SpecificArtwork[] | void>;
   setCritiqueStatus: (artworkID: number, critiqueStatus: string) => Promise<boolean | void>;
-  submitArtwork: (artworkFormData: SubmitArtworkFormPropTypes) => Promise<boolean | void>;
+  submitArtwork: (submitArtworkFormData: SubmitArtworkFormPropTypes) => Promise<boolean | void>;
+  submitCritique: (submitCritiqueFormData: SubmitCritiqueFormPropTypes) => Promise<boolean | void>;
+  getCritiquesByArtworkID: (artworkID: number) => Promise<IArtwork[] | void>;
 }
 
 export interface ISessionDetails {
   user: IUser | undefined;
   isSignedIn: boolean;
+
   accessJwt: string | undefined;
   accessJwtExpiresOn: string;
   refreshJwt: string | null;

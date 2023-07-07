@@ -7,6 +7,8 @@ const ArtworkContext = createContext<IArtworkContext>({
   getAllArtworksByUserID: () => Promise.resolve(),
   setCritiqueStatus: () => Promise.resolve(),
   submitArtwork: () => Promise.resolve(),
+  submitCritique: () => Promise.resolve(),
+  getCritiquesByArtworkID: () => Promise.resolve(),
 });
 
 export default ArtworkContext;

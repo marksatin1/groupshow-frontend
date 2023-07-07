@@ -30,5 +30,5 @@ export type SubmitArtworkFormPropTypes = {
 };
 
 export type SubmitCritiqueFormPropTypes = {
-  critiqueFormData: ISubmitCritiqueForm;
+  submitCritiqueFormData: ISubmitCritiqueForm;
 };

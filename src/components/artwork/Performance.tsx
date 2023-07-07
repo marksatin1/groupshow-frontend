@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { PerformancePropTypes } from "../../types/ArtworkPropTypes";
+import { Link } from "react-router-dom";
 
 const Performance: FC<PerformancePropTypes> = ({ performance }) => {
   return (
@@ -8,7 +9,7 @@ const Performance: FC<PerformancePropTypes> = ({ performance }) => {
       <video src={performance.bucketUrl} />
       {performance.isOpenForCritique && (
         <div>
-          <h2>Critique</h2>
+          <Link to={`/artwork/${performance.artworkID}/submit-critique`}>Critique</Link>
         </div>
       )}
     </div>

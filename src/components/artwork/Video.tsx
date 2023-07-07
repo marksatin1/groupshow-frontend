@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { VideoPropTypes } from "../../types/ArtworkPropTypes";
+import { Link } from "react-router-dom";
 
 const Video: FC<VideoPropTypes> = ({ video }) => {
   return (
@@ -7,7 +8,7 @@ const Video: FC<VideoPropTypes> = ({ video }) => {
       <h1>{video.title}</h1>
       {video.isOpenForCritique && (
         <div>
-          <h2>Critique</h2>
+          <Link to={`/artwork/${video.artworkID}/submit-critique`}>Critique</Link>
         </div>
       )}
     </div>

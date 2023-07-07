@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import hamburgerIcon from "../../assets/icons8-hamburger-menu-50.png"
 
 const HamburgerMenu = () => {
-
   const { isSignedIn, logout } = useContext(AuthContext);
-
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {

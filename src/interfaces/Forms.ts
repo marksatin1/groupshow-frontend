@@ -45,4 +45,6 @@ export interface ISubmitArtworkForm {
 export interface ISubmitCritiqueForm {
   rating: number;
   content: string;
+  criticID: number;
+  artworkID: number;
 }

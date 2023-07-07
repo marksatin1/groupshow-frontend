@@ -1,4 +1,4 @@
-import { SpecificArtwork } from "../types/UIPropTypes";
+import { SpecificArtwork } from "../types/ArtworkPropTypes";
 import { IUser } from "./User";
 
 export interface ICritique {

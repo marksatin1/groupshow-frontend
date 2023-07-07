@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { SongPropTypes } from "../../types/ArtworkPropTypes";
+import { Link } from "react-router-dom";
 
 const Song: FC<SongPropTypes> = ({ song }) => {
   return (
@@ -8,7 +9,7 @@ const Song: FC<SongPropTypes> = ({ song }) => {
       <audio src={song.bucketUrl} />
       {song.isOpenForCritique && (
         <div>
-          <h2>Critique</h2>
+          <Link to={`/artwork/${song.artworkID}/submit-critique`}>Critique</Link>
         </div>
       )}
     </div>

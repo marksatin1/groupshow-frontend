@@ -2,9 +2,12 @@ import ArtworkContext from "./ArtworkContext";
 import { axInst } from "../config/axiosInstance";
 import { IArtwork } from "../interfaces/Artwork";
 import { SpecificArtwork } from "../types/ArtworkPropTypes";
-import { SubmitArtworkFormPropTypes } from "../types/FormPropTypes";
+import { SubmitArtworkFormPropTypes, SubmitCritiqueFormPropTypes } from "../types/FormPropTypes";
+import { useNavigate } from "react-router-dom";
 
 const ArtworkContextProvider = ({ children }: any) => {
+  const navigate = useNavigate();
+
   const getTwentyMostRecentArtworks = async () => {
     try {
       const { data: artworks } = await axInst.get<SpecificArtwork[] | void>("/artwork/get-twenty");
@@ -49,13 +52,35 @@ const ArtworkContextProvider = ({ children }: any) => {
   };
 
   const submitArtwork = async ({ submitArtworkFormData }: SubmitArtworkFormPropTypes) => {
-    console.log(submitArtworkFormData);
     try {
       const { data: isSubmittedSuccessfully } = await axInst.post<boolean | void>(
         `/${submitArtworkFormData.artworkType.toLowerCase()}/upload`,
         submitArtworkFormData
       );
       console.log(`Artwork form data is submitted successfully: ${isSubmittedSuccessfully}`);
+      return navigate("/profile");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const submitCritique = async ({ submitCritiqueFormData }: SubmitCritiqueFormPropTypes) => {
+    try {
+      const { data: isSubmittedSuccessfully } = await axInst.post<boolean | void>(
+        "/critique/add",
+        submitCritiqueFormData
+      );
+      console.log(`Artwork form data is submitted successfully: ${isSubmittedSuccessfully}`);
+      return navigate("/home");
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const getCritiquesByArtworkID = async (artworkID: number) => {
+    try {
+      const { data: critiques } = await axInst.get<any[] | void>(`/critique/all/${artworkID}`);
+      return critiques;
     } catch (e) {
       console.error(e);
     }
@@ -67,6 +92,8 @@ const ArtworkContextProvider = ({ children }: any) => {
     getAllArtworksByUserID,
     setCritiqueStatus,
     submitArtwork,
+    submitCritique,
+    getCritiquesByArtworkID,
   };
 
   return <ArtworkContext.Provider value={artworkContext}>{children}</ArtworkContext.Provider>;
